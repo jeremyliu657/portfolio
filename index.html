@@ -563,6 +563,10 @@ body {
 .case-timeline-title { font-size:0.9rem; font-weight:600; color:#fff; text-align:center; margin-bottom:0.5rem; }
 .case-timeline-desc { font-size:0.75rem; color:var(--grey); text-align:center; line-height:1.5; }
 .case-insights { display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap; }
+.case-swipe-hint { display:none; text-align:center; margin-bottom:1rem; color:var(--grey); font-size:0.8rem; }
+.case-swipe-hint::after { content:"→"; display:inline-block; animation:swipeHint 1.5s ease-in-out infinite; margin-left:0.5rem; }
+@keyframes swipeHint { 0%,100% { transform:translateX(0); opacity:0.5; } 50% { transform:translateX(10px); opacity:1; } }
+@media (max-width:768px) { .case-swipe-hint { display:block; } }
 .insight-tag { background:rgba(200,16,46,0.15); border:1px solid rgba(200,16,46,0.3); color:#fff; padding:0.5rem 1rem; border-radius:50px; font-size:0.85rem; }
 .result-item {
   background:rgba(200,16,46,0.12); border:1px solid rgba(200,16,46,0.35); border-radius:6px;
@@ -1657,6 +1661,7 @@ body {
       <h2 class="case-title reveal d2">💡 不是砸钱，是共创<br><span>酷猫卡牌的社群运营方法论</span></h2>
       <p class="case-desc reveal d3">一家被忽视的中尾部门店，如何在无资源支持下，通过社群运营和客户共创，从T4逆袭成为全国T1头部门店</p>
     </div>
+    <div class="case-swipe-hint">左右滑动查看完整时间线</div>
     <div class="case-timeline">
       <div class="case-timeline-item reveal d2">
         <div class="case-timeline-dot"></div>
