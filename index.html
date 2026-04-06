@@ -1581,7 +1581,7 @@ body {
         <div class="metric-label">宝可梦卡牌运营指标增长</div>
         <div class="metric-sub">全国排名 Q3-Q4</div>
         <div class="metric-imgs">
-          <img src="图片参考/数据卡片-宝可梦/Q3-Q4全国宝可梦核心指标达成第一.png" alt="宝可梦" onclick="openMetricLightbox(this)">
+          <img src="图片参考/数据卡片-宝可梦/Q3-Q4全国宝可梦核心指标达成第一.png" alt="宝可梦" onclick="openMetricPanel(this, '宝可梦卡牌运营指标', 'Q3-Q4 全国排名 NO.1')">
         </div>
       </div>
       <div class="metric-card reveal d2">
@@ -1590,7 +1590,7 @@ body {
         <div class="metric-label">英雄联盟卡牌运营指标增长</div>
         <div class="metric-sub">全国排名 Q3-Q4</div>
         <div class="metric-imgs">
-          <img src="图片参考/数据卡片-英雄联盟/Q3-Q4全国英雄联盟卡牌核心指标达成第二.png" alt="英雄联盟" onclick="openMetricLightbox(this)">
+          <img src="图片参考/数据卡片-英雄联盟/Q3-Q4全国英雄联盟卡牌核心指标达成第二.png" alt="英雄联盟" onclick="openMetricPanel(this, '英雄联盟卡牌运营指标', 'Q3-Q4 全国排名 NO.2')">
         </div>
       </div>
       <div class="metric-card reveal d3">
@@ -1605,8 +1605,8 @@ body {
         <div class="metric-label">广州北区域出货额提升</div>
         <div class="metric-sub">3个月内 · Kraft Heinz</div>
         <div class="metric-imgs">
-          <img src="图片参考/数据卡片-卡夫出货/品类进攻计划-销量增长.png" alt="出货" onclick="openMetricLightbox(this)">
-          <img src="图片参考/数据卡片-卡夫出货/销售团队管理-提升人效开发门店.png" alt="人效" onclick="openMetricLightbox(this)">
+          <img src="图片参考/数据卡片-卡夫出货/品类进攻计划-销量增长.png" alt="出货" onclick="openMetricPanel(this, '广州北区域出货额提升', '+42.4% 3个月内')">
+          <img src="图片参考/数据卡片-卡夫出货/销售团队管理-提升人效开发门店.png" alt="人效" onclick="openMetricPanel(this, '销售团队管理', '提升人效开发门店')">
         </div>
       </div>
       <div class="metric-card reveal d4">
@@ -1615,8 +1615,8 @@ body {
         <div class="metric-label">门店人效提升</div>
         <div class="metric-sub">GTM渠道轮岗期间</div>
         <div class="metric-imgs">
-          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-积累客情单日爆单.png" alt="客户" onclick="openMetricLightbox(this)">
-          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-识别需求精准卖进.png" alt="需求" onclick="openMetricLightbox(this)">
+          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-积累客情单日爆单.png" alt="客户" onclick="openMetricPanel(this, '餐饮部门客户开发', '积累客情单日爆单')">
+          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-识别需求精准卖进.png" alt="需求" onclick="openMetricPanel(this, '餐饮部门客户开发', '识别需求精准卖进')">
         </div>
       </div>
       <div class="metric-card reveal d4">
@@ -2370,6 +2370,21 @@ function openMetricLightbox(img) {
   lightboxImg.src = img.src;
   lightboxCounter.textContent = '1 / 1';
   lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function openMetricPanel(img, title, subtitle) {
+  const panel = document.getElementById('nodePanel');
+  document.getElementById('panelTitle').textContent = title;
+  document.getElementById('panelSubtitle').textContent = subtitle;
+  const thumbsContainer = document.getElementById('panelThumbs');
+  const imgsContainer = img.closest('.metric-imgs');
+  const imgs = imgsContainer ? imgsContainer.querySelectorAll('img') : [img];
+  let html = '';
+  imgs.forEach((i) => {
+    html += `<div class="panel-thumb-item"><img src="${i.src}" alt="${i.alt}" onclick="openPanelLightbox(this)"></div>`;
+  });
+  thumbsContainer.innerHTML = html;
+  panel.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 </script>
