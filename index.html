@@ -564,6 +564,8 @@ body {
 .case-timeline-desc { font-size:0.75rem; color:var(--grey); text-align:center; line-height:1.5; }
 .case-timeline-imgs { display:flex; gap:4px; margin-top:0.5rem; justify-content:center; flex-wrap:wrap; }
 .case-timeline-imgs .thumb-item { flex:none; opacity:1; transform:none; }
+.case-timeline-imgs { max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; }
+.case-timeline-item.expanded .case-timeline-imgs { max-height:200px; opacity:1; }
 .case-timeline-imgs img { width:55px; height:40px; object-fit:cover; border-radius:4px; cursor:pointer; transition:transform 0.2s; }
 .case-timeline-imgs img:hover { transform:scale(1.08); }
 .case-insights { display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; margin-top:0.8rem; }
@@ -1667,17 +1669,17 @@ body {
     </div>
     <div class="case-swipe-hint">向右滑动陪伴客户一起成长</div>
     <div class="case-timeline">
-      <div class="case-timeline-item reveal d2">
+      <div class="case-timeline-item reveal d2" data-expandable onclick="toggleTimelineCard(this)">
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2025.08</div>
         <div class="case-timeline-content">
           <div class="case-tier">T4 → T3</div>
           <div class="case-timeline-title">接手酷猫，共同创作起点</div>
           <div class="case-timeline-desc">90%中尾部门店，无资源支持。与客户建立信任，共同创作打磨活动，社群活力开始激发。</div>
-          <div class="case-timeline-imgs"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/我开始和客户一起共创，结合客户和玩家需求，设计提升玩家体验的一系列活动.png" alt="共创活动"></div><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/接手酷猫卡牌，所有人都不看好，但我看到了门店社群和经营者的巨大潜力，我们一起共创更体验更丰富的社区活动.JPEG" alt="社群潜力"></div></div>
+          <div class="case-timeline-imgs highlight-detail"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/我开始和客户一起共创，结合客户和玩家需求，设计提升玩家体验的一系列活动.png" alt="共创活动"></div><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/接手酷猫卡牌，所有人都不看好，但我看到了门店社群和经营者的巨大潜力，我们一起共创更体验更丰富的社区活动.JPEG" alt="社群潜力"></div></div>
         </div>
       </div>
-      <div class="case-timeline-item reveal d3">
+      <div class="case-timeline-item reveal d3" data-expandable onclick="toggleTimelineCard(this)">
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2025.10</div>
         <div class="case-timeline-content">
@@ -1686,7 +1688,7 @@ body {
           <div class="case-timeline-desc">共同创作成果显现，开始获得大区关注和资源扶持。配合官方大型活动+社区活动，门店升级。</div>
         </div>
       </div>
-      <div class="case-timeline-item reveal d4">
+      <div class="case-timeline-item reveal d4" data-expandable onclick="toggleTimelineCard(this)">
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2025.11</div>
         <div class="case-timeline-content">
@@ -1695,7 +1697,7 @@ body {
           <div class="case-timeline-desc">社群氛围持续向好，玩家自发传播，口碑效应显现。运营指标稳步提升。</div>
         </div>
       </div>
-      <div class="case-timeline-item reveal d5">
+      <div class="case-timeline-item reveal d5" data-expandable onclick="toggleTimelineCard(this)">
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2026.01</div>
         <div class="case-timeline-content">
@@ -1835,7 +1837,9 @@ slides.forEach(s => observer.observe(s));
 document.querySelectorAll('[data-expandable]').forEach(card => {
   card.addEventListener('click', function(e) {
     // Don't collapse if clicking inside detail
-    this.classList.toggle('expanded');
+    if (!e.target.closest('.thumb-item') && !e.target.closest('.case-timeline-imgs')) {
+      this.classList.toggle('expanded');
+    }
   });
 });
 
