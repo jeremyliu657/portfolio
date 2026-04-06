@@ -1531,6 +1531,8 @@ let currentGallery = [];
 let currentIndex = 0;
 let dragStartY = 0;
 let dragCurrentY = 0;
+let dragStartX = 0;
+let dragCurrentX = 0;
 let isDragging = false;
 
 function openLightbox(thumb) {
@@ -1608,6 +1610,8 @@ if (lightboxDragArea) {
     isDragging = true;
     dragStartY = e.touches[0].clientY;
     dragCurrentY = e.touches[0].clientY;
+    dragStartX = e.touches[0].clientX;
+    dragCurrentX = e.touches[0].clientX;
     this.classList.add('dragging');
   }, { passive: true });
 }
@@ -1627,11 +1631,18 @@ document.addEventListener('mousemove', function(e) {
 document.addEventListener('touchmove', function(e) {
   if (!isDragging) return;
   dragCurrentY = e.touches[0].clientY;
-  const diff = dragCurrentY - dragStartY;
+  dragCurrentX = e.touches[0].clientX;
+  const diffY = dragCurrentY - dragStartY;
+  const diffX = dragCurrentX - dragStartX;
   const card = document.getElementById('lightbox-drag-area');
-  if (card && diff > 0) {
-    card.style.transform = `translateY(${diff}px)`;
-    card.style.opacity = Math.max(0, 1 - diff / 300);
+  if (card) {
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+      // Horizontal swipe - don't apply vertical drag transform
+      card.style.transform = `translateX(${diffX * 0.3}px)`;
+    } else if (diffY > 0) {
+      card.style.transform = `translateY(${diffY}px)`;
+      card.style.opacity = Math.max(0, 1 - diffY / 300);
+    }
   }
 }, { passive: true });
 
@@ -1648,8 +1659,17 @@ document.addEventListener('mouseup', function(e) {
 
 document.addEventListener('touchend', function(e) {
   if (!isDragging) return;
-  const diff = dragCurrentY - dragStartY;
-  if (diff > 80) {
+  const diffY = dragCurrentY - dragStartY;
+  const diffX = dragCurrentX - dragStartX;
+  if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+    // Horizontal swipe
+    if (diffX > 0) {
+      navigateLightbox(-1); // Swipe right = prev
+    } else {
+      navigateLightbox(1); // Swipe left = next
+    }
+    resetDrag();
+  } else if (diffY > 80) {
     closeLightbox();
   } else {
     resetDrag();
