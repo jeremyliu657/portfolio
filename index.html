@@ -1568,8 +1568,9 @@ function openLightbox(thumb) {
   const lightboxCaption = document.getElementById('lightbox-caption');
   const counter = document.getElementById('lightbox-counter');
 
-  // Find gallery (siblings)
-  const thumbsContainer = thumb.closest('.detail-thumbs') || thumb.closest('.panel-thumbs');
+  // Find gallery (siblings within same container only)
+  const thumbItem = thumb.closest('.thumb-item');
+  const thumbsContainer = thumbItem ? thumbItem.parentElement : thumb.closest('.detail-thumbs');
   currentGallery = thumbsContainer ? Array.from(thumbsContainer.querySelectorAll('.thumb-item img, .panel-thumb-item img')) : [img];
   currentIndex = currentGallery.findIndex(i => i === img);
 
