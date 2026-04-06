@@ -562,6 +562,9 @@ body {
 .case-tier { font-size:1.1rem; font-weight:700; color:var(--gold); text-align:center; margin-bottom:0.3rem; }
 .case-timeline-title { font-size:0.9rem; font-weight:600; color:#fff; text-align:center; margin-bottom:0.5rem; }
 .case-timeline-desc { font-size:0.75rem; color:var(--grey); text-align:center; line-height:1.5; }
+.case-timeline-imgs { display:flex; gap:4px; margin-top:0.5rem; justify-content:center; flex-wrap:wrap; }
+.case-timeline-imgs img { width:55px; height:40px; object-fit:cover; border-radius:4px; cursor:pointer; transition:transform 0.2s; }
+.case-timeline-imgs img:hover { transform:scale(1.08); }
 .case-insights { display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; margin-top:0.8rem; }
 .case-swipe-hint { display:none; text-align:center; margin-bottom:0.5rem; color:var(--grey); font-size:0.7rem; }
 .case-swipe-hint::after { content:"→"; display:inline-block; animation:swipeHint 1.5s ease-in-out infinite; margin-left:0.5rem; }
@@ -1670,6 +1673,7 @@ body {
           <div class="case-tier">T4 → T3</div>
           <div class="case-timeline-title">接手酷猫，共同创作起点</div>
           <div class="case-timeline-desc">90%中尾部门店，无资源支持。与客户建立信任，共同创作打磨活动，社群活力开始激发。</div>
+          <div class="case-timeline-imgs"><img src="图片参考/酷猫时间线-08月/我开始和客户一起共创，结合客户和玩家需求，设计提升玩家体验的一系列活动.png" alt="共创活动" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/接手酷猫卡牌，所有人都不看好，但我看到了门店社群和经营者的巨大潜力，我们一起共创更体验更丰富的社区活动.JPEG" alt="社群潜力" onclick="openLightbox(this)"></div>
         </div>
       </div>
       <div class="case-timeline-item reveal d3">
