@@ -537,6 +537,21 @@ body {
 .project-title span { color:var(--red); }
 .project-desc  { font-size: clamp(0.78rem,1.4vw,0.95rem); color:var(--grey-light); line-height:1.7; margin-bottom: clamp(0.8rem,2vh,1.8rem); }
 .project-results { display:flex; flex-direction:column; gap: clamp(0.4rem,1.2vh,1rem); }
+
+/* Case Study Timeline */
+.case-header { text-align:center; margin-bottom:2rem; }
+.case-title { font-family:"Bebas Neue",sans-serif; font-size:clamp(1.4rem,3vw,2.4rem); line-height:1.2; letter-spacing:2px; margin-bottom:1rem; }
+.case-title span { color:var(--red); }
+.case-desc { color:var(--grey-light); font-size:1rem; max-width:600px; margin:0 auto 1.5rem; line-height:1.6; }
+.case-timeline { display:flex; gap:1.5rem; margin-bottom:2rem; overflow-x:auto; padding-bottom:1rem; }
+.case-timeline-item { flex:1; min-width:180px; position:relative; padding:1rem; background:var(--card); border:1px solid var(--border); border-radius:12px; }
+.case-timeline-dot { width:12px; height:12px; background:var(--red); border-radius:50%; position:absolute; top:-6px; left:50%; transform:translateX(-50%); box-shadow:0 0 10px rgba(200,16,46,0.5); }
+.case-timeline-period { font-size:0.75rem; color:var(--red); font-weight:600; text-align:center; margin-bottom:0.5rem; }
+.case-tier { font-size:1.1rem; font-weight:700; color:var(--gold); text-align:center; margin-bottom:0.3rem; }
+.case-timeline-title { font-size:0.9rem; font-weight:600; color:#fff; text-align:center; margin-bottom:0.5rem; }
+.case-timeline-desc { font-size:0.75rem; color:var(--grey); text-align:center; line-height:1.5; }
+.case-insights { display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap; }
+.insight-tag { background:rgba(200,16,46,0.15); border:1px solid rgba(200,16,46,0.3); color:#fff; padding:0.5rem 1rem; border-radius:50px; font-size:0.85rem; }
 .result-item {
   background:rgba(200,16,46,0.12); border:1px solid rgba(200,16,46,0.35); border-radius:6px;
   padding: clamp(0.3rem,0.7vh,0.5rem) clamp(0.5rem,1vw,0.75rem);
@@ -1625,27 +1640,56 @@ body {
 <!-- ============ SLIDE 5.5: COOLCAT CASE STUDY ============ -->
 <section class="slide" id="slide-5b">
   <div class="slide-content">
-    <div class="project-layout">
-      <div>
-        <div class="project-badge reveal d1"><span>★</span> Case Study · 案例研究</div>
-        <h2 class="project-title reveal d2">💡 不是砸钱，是共创<br><span>酷猫卡牌的社群</span><br>运营方法论</h2>
-        <p class="project-desc reveal d3">一家被忽视的中尾部门店，如何在无资源支持下，通过社群运营和客户共创，从T4逆袭成为全国T1头部门店。</p>
-        <div class="project-results reveal d4">
-          <div class="result-item">💡 挑战：90%中尾部门店，无资源砸钱买增长</div>
-          <div class="result-item">💡 洞察：社群和共创能替代金钱买来的用户</div>
-          <div class="result-item">💡 行动：与客户共同创作好玩的活动</div>
-          <div class="result-item">💡 成果：T4 → T3 → T2 → T1 逆袭路径</div>
+    <div class="case-header">
+      <div class="project-badge reveal d1"><span>★</span> Case Study · 案例研究</div>
+      <h2 class="case-title reveal d2">💡 不是砸钱，是共创<br><span>酷猫卡牌的社群运营方法论</span></h2>
+      <p class="case-desc reveal d3">一家被忽视的中尾部门店，如何在无资源支持下，通过社群运营和客户共创，从T4逆袭成为全国T1头部门店</p>
+    </div>
+    <div class="case-timeline">
+      <div class="case-timeline-item reveal d2">
+        <div class="case-timeline-dot"></div>
+        <div class="case-timeline-period">2025.08</div>
+        <div class="case-timeline-content">
+          <div class="case-tier">T4 → T3</div>
+          <div class="case-timeline-title">接手酷猫，共同创作起点</div>
+          <div class="case-timeline-desc">90%中尾部门店，无资源支持。与客户建立信任，共同创作打磨活动，社群活力开始激发。</div>
         </div>
       </div>
-      <div class="project-visual">
-        <div class="visual-card reveal d2"><div class="visual-card-title">🏪 行业痛点</div><div class="visual-card-body">卡牌行业习惯用金钱买增长，但真正的玩家体验问题被忽视。中尾部门店难以获得资源支持。</div></div>
-        <div class="visual-card reveal d3"><div class="visual-card-title">💡 创新破局</div><div class="visual-card-body">资源和奖励买不来真正的用户。关注也是一种资源，好玩的活动是自然增长之道。</div></div>
-        <div class="visual-card reveal d4"><div class="visual-card-title">🤝 客户共创</div><div class="visual-card-body">与客户共同创作，激发社群活力。在一次次的拜访中，识别客户潜力，摸清社群需求。</div></div>
-        <div class="visual-card reveal d5"><div class="visual-card-title">📈 成果</div><div class="visual-card-body">酷猫卡牌从T4晋升至T1，成为全国标杆门店，证明社群运营比砸钱更有效。</div></div>
+      <div class="case-timeline-item reveal d3">
+        <div class="case-timeline-dot"></div>
+        <div class="case-timeline-period">2025.10</div>
+        <div class="case-timeline-content">
+          <div class="case-tier">T3 → T2</div>
+          <div class="case-timeline-title">获得关注，资源开始倾斜</div>
+          <div class="case-timeline-desc">共同创作成果显现，开始获得大区关注和资源扶持。配合官方大型活动+社区活动，门店升级。</div>
+        </div>
+      </div>
+      <div class="case-timeline-item reveal d4">
+        <div class="case-timeline-dot"></div>
+        <div class="case-timeline-period">2025.11</div>
+        <div class="case-timeline-content">
+          <div class="case-tier">T2 稳定</div>
+          <div class="case-timeline-title">社群驱动增长</div>
+          <div class="case-timeline-desc">社群氛围持续向好，玩家自发传播，口碑效应显现。运营指标稳步提升。</div>
+        </div>
+      </div>
+      <div class="case-timeline-item reveal d5">
+        <div class="case-timeline-dot"></div>
+        <div class="case-timeline-period">2026.01</div>
+        <div class="case-timeline-content">
+          <div class="case-tier">🏆 T1 全国头部</div>
+          <div class="case-timeline-title">标杆门店诞生</div>
+          <div class="case-timeline-desc">在社区的支持下，酷猫卡牌成为全国T1头部门店。证明：社群运营比砸钱更有效。</div>
+        </div>
       </div>
     </div>
+    <div class="case-insights reveal d5">
+      <div class="insight-tag">💡 关注也是一种资源</div>
+      <div class="insight-tag">🤝 和客户共同成长能产生巨大价值</div>
+      <div class="insight-tag">🎮 相信社群精神，相信社区联结的力量</div>
+    </div>
   </div>
-  <div class="slide-num">05.5 / 08</div>
+  <div class="slide-num">05.5 / 09</div>
 </section>
 
 <!-- ============ SLIDE 6: KRAFT HEINZ ============ -->
