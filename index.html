@@ -1003,7 +1003,8 @@ body {
   .hero-wechat { padding: 0.25rem 0.35rem; font-size: 0.6rem; white-space: nowrap; flex-shrink: 0; }
   .hero-wechat span:first-child { font-size: 0.75rem !important; }
   .wechat-modal-card { padding: 1.5rem; }
-  .wechat-modal-qr img { width: 200px; height: 200px; }
+  .wechat-modal-qr { display: flex; justify-content: center; align-items: center; }
+  .wechat-modal-qr img { width: 180px; height: 180px; }
   .resume-modal-preview iframe { height: 350px; }
 }
 
@@ -1196,10 +1197,14 @@ body {
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .wechat-modal-qr img {
-  width: 320px;
-  height: 320px;
+  width: 280px;
+  height: 280px;
+  max-width: 100%;
   object-fit: contain;
 }
 .wechat-modal-info {
