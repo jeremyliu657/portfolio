@@ -1570,7 +1570,8 @@ function openLightbox(thumb) {
 
   // Find gallery (siblings within same container only)
   const thumbItem = thumb.closest('.thumb-item');
-  const thumbsContainer = thumbItem ? thumbItem.parentElement : thumb.closest('.detail-thumbs');
+  const panelThumbItem = thumb.closest('.panel-thumb-item');
+  const thumbsContainer = thumbItem ? thumbItem.parentElement : (panelThumbItem ? panelThumbItem.parentElement : thumb.closest('.detail-thumbs'));
   currentGallery = thumbsContainer ? Array.from(thumbsContainer.querySelectorAll('.thumb-item img, .panel-thumb-item img')) : [img];
   currentIndex = currentGallery.findIndex(i => i === img);
 
@@ -1831,9 +1832,17 @@ function openPanelLightbox(thumb) {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const counter = document.getElementById('lightbox-counter');
+
+  // Set up gallery from panelThumbs container
+  const thumbsContainer = document.getElementById('panelThumbs');
+  currentGallery = thumbsContainer ? Array.from(thumbsContainer.querySelectorAll('.panel-thumb-item img')) : [img];
+  currentIndex = currentGallery.findIndex(i => i === img);
+
   lightboxImg.src = img.src;
   lightboxImg.alt = img.alt;
   lightboxCaption.textContent = img.alt;
+  counter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
   lightbox.classList.add('active');
 }
 
