@@ -489,6 +489,9 @@ body {
 .metric-num   { font-family:"Bebas Neue",sans-serif; font-size: clamp(1.8rem,4.5vw,3.6rem); color:var(--red); line-height:1; margin-bottom:5px; }
 .metric-label { font-size: clamp(0.76rem,1.4vw,1rem); color:var(--grey-light); line-height:1.4; }
 .metric-sub   { font-size: clamp(0.65rem,1vw,0.82rem); color:var(--grey); margin-top:4px; }
+.metric-imgs { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; justify-content:center; }
+.metric-imgs img { width:70px; height:70px; object-fit:cover; border-radius:8px; cursor:pointer; transition:transform 0.2s; }
+.metric-imgs img:hover { transform:scale(1.08); }
 .company-badge {
   position:absolute; top:8px; left:8px;
   font-size: clamp(0.55rem,0.9vw,0.75rem); padding:2px 8px; border-radius:4px;
@@ -780,6 +783,7 @@ body {
   .metric-num   { font-size:clamp(1.5rem,7vw,2rem)!important; }
   .metric-label { font-size:0.7rem!important; }
   .metric-sub   { font-size:0.62rem!important; }
+  .metric-imgs img { width:50px; height:50px; }
   .company-badge { font-size:0.52rem; padding:2px 5px; }
 
   /* Project */
@@ -1571,12 +1575,56 @@ body {
       <h2 class="reveal d2" style="margin-top:0.7rem">KEY ACHIEVEMENTS · 核心成果</h2>
     </div>
     <div class="metrics-grid">
-      <div class="metric-card reveal d2"><div class="company-badge yaoji">@姚记潮品</div><div class="metric-num" data-target="1" data-prefix="NO.">NO.1</div><div class="metric-label">宝可梦卡牌运营指标增长</div><div class="metric-sub">全国排名 Q3-Q4</div></div>
-      <div class="metric-card reveal d2"><div class="company-badge yaoji">@姚记潮品</div><div class="metric-num" data-target="2" data-prefix="NO.">NO.2</div><div class="metric-label">英雄联盟卡牌运营指标增长</div><div class="metric-sub">全国排名 Q3-Q4</div></div>
-      <div class="metric-card reveal d3"><div class="company-badge yaoji">@姚记潮品</div><div class="metric-num" data-target="50" data-suffix="+">50+</div><div class="metric-label">负责潮玩卡牌店铺运营管理</div><div class="metric-sub">上海区域</div></div>
-      <div class="metric-card reveal d3"><div class="company-badge kraft">@卡夫亨氏</div><div class="metric-num" data-target="42" data-prefix="+" data-suffix=".4%">+42.4%</div><div class="metric-label">广州北区域出货额提升</div><div class="metric-sub">3个月内 · Kraft Heinz</div></div>
-      <div class="metric-card reveal d4"><div class="company-badge kraft">@卡夫亨氏</div><div class="metric-num" data-target="35" data-prefix="+" data-suffix="%">+35%</div><div class="metric-label">门店人效提升</div><div class="metric-sub">GTM渠道轮岗期间</div></div>
-      <div class="metric-card reveal d4"><div class="company-badge translate">@研究生在读</div><div class="metric-num" data-target="90" data-suffix="+">90+</div><div class="metric-label">国际口译活动场次</div><div class="metric-sub">在校期间累计</div></div>
+      <div class="metric-card reveal d2">
+        <div class="company-badge yaoji">@姚记潮品</div>
+        <div class="metric-num" data-target="1" data-prefix="NO.">NO.1</div>
+        <div class="metric-label">宝可梦卡牌运营指标增长</div>
+        <div class="metric-sub">全国排名 Q3-Q4</div>
+        <div class="metric-imgs">
+          <img src="图片参考/数据卡片-宝可梦/Q3-Q4全国宝可梦核心指标达成第一.png" alt="宝可梦" onclick="openMetricLightbox(this)">
+        </div>
+      </div>
+      <div class="metric-card reveal d2">
+        <div class="company-badge yaoji">@姚记潮品</div>
+        <div class="metric-num" data-target="2" data-prefix="NO.">NO.2</div>
+        <div class="metric-label">英雄联盟卡牌运营指标增长</div>
+        <div class="metric-sub">全国排名 Q3-Q4</div>
+        <div class="metric-imgs">
+          <img src="图片参考/数据卡片-英雄联盟/Q3-Q4全国英雄联盟卡牌核心指标达成第二.png" alt="英雄联盟" onclick="openMetricLightbox(this)">
+        </div>
+      </div>
+      <div class="metric-card reveal d3">
+        <div class="company-badge yaoji">@姚记潮品</div>
+        <div class="metric-num" data-target="50" data-suffix="+">50+</div>
+        <div class="metric-label">负责潮玩卡牌店铺运营管理</div>
+        <div class="metric-sub">上海区域</div>
+      </div>
+      <div class="metric-card reveal d3">
+        <div class="company-badge kraft">@卡夫亨氏</div>
+        <div class="metric-num" data-target="42" data-prefix="+" data-suffix=".4%">+42.4%</div>
+        <div class="metric-label">广州北区域出货额提升</div>
+        <div class="metric-sub">3个月内 · Kraft Heinz</div>
+        <div class="metric-imgs">
+          <img src="图片参考/数据卡片-卡夫出货/品类进攻计划-销量增长.png" alt="出货" onclick="openMetricLightbox(this)">
+          <img src="图片参考/数据卡片-卡夫出货/销售团队管理-提升人效开发门店.png" alt="人效" onclick="openMetricLightbox(this)">
+        </div>
+      </div>
+      <div class="metric-card reveal d4">
+        <div class="company-badge kraft">@卡夫亨氏</div>
+        <div class="metric-num" data-target="35" data-prefix="+" data-suffix="%">+35%</div>
+        <div class="metric-label">门店人效提升</div>
+        <div class="metric-sub">GTM渠道轮岗期间</div>
+        <div class="metric-imgs">
+          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-积累客情单日爆单.png" alt="客户" onclick="openMetricLightbox(this)">
+          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-识别需求精准卖进.png" alt="需求" onclick="openMetricLightbox(this)">
+        </div>
+      </div>
+      <div class="metric-card reveal d4">
+        <div class="company-badge translate">@研究生在读</div>
+        <div class="metric-num" data-target="90" data-suffix="+">90+</div>
+        <div class="metric-label">国际口译活动场次</div>
+        <div class="metric-sub">在校期间累计</div>
+      </div>
     </div>
   </div>
   <div class="slide-num">04 / 08</div>
@@ -2313,6 +2361,16 @@ function openLinkedinModal() {
 function closeLinkedinModal() {
   document.getElementById('linkedinModal').classList.remove('active');
   document.body.style.overflow = '';
+}
+function openMetricLightbox(img) {
+  const currentGallery = [img.src.replace(/-\d+x\d+\.png$/, '.png')];
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  lightboxImg.src = img.src;
+  lightboxCounter.textContent = '1 / 1';
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 </script>
 
