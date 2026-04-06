@@ -1097,6 +1097,163 @@ body {
   .panel-content { width: 100%; padding: 1.5rem 1rem; }
   .panel-title { font-size: 1.4rem; }
 }
+
+/* WeChat Contact Modal */
+.hero-buttons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+.hero-wechat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(200, 16, 46, 0.15);
+  border: 1px solid rgba(200, 16, 46, 0.4);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: fit-content;
+}
+.hero-wechat:hover {
+  background: rgba(200, 16, 46, 0.3);
+  border-color: rgba(200, 16, 46, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+}
+.hero-wechat svg {
+  flex-shrink: 0;
+}
+
+.wechat-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.wechat-modal.active {
+  display: flex;
+}
+.wechat-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+.wechat-modal-card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalPopIn 0.25s ease-out;
+}
+@keyframes modalPopIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.wechat-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+}
+.wechat-modal-close:hover { color: #333; }
+.wechat-modal-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.2rem;
+}
+.wechat-modal-qr {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+}
+.wechat-modal-qr img {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+}
+.wechat-modal-info {
+  text-align: center;
+}
+.wechat-modal-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.wechat-id-label {
+  color: #666;
+  font-size: 0.9rem;
+}
+.wechat-id-value {
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: monospace;
+}
+.wechat-copy-btn {
+  background: #07ad64;
+  color: #fff;
+  border: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.wechat-copy-btn:hover { background: #069a50; }
+.wechat-copy-btn.copied { background: #888; }
+.wechat-modal-tips {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+/* Resume Modal */
+.resume-modal-preview {
+  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.resume-modal-footer {
+  text-align: center;
+}
+.resume-download-btn {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.resume-download-btn:hover { background: #1d4ed8; }
 </style>
 </head>
 <body>
@@ -1127,6 +1284,20 @@ body {
           <p class="intro-line"><span class="intro-label">我擅长：</span>需求洞察、大客户服务、数据分析</p>
           <p class="intro-line"><span class="intro-label">我热衷：</span>创意营销、流行文化、IP 叙事</p>
           <p class="intro-line"><span class="intro-label">我拥抱：</span>AI 创新工具、利他主义、持续进化</p>
+        </div>
+        <div class="hero-buttons">
+          <div class="hero-wechat" onclick="openWechatModal()">
+            <span style="font-size:1.4rem">💬</span>
+            <span>加我微信</span>
+          </div>
+          <div class="hero-wechat" onclick="openResumeModal()">
+            <span style="font-size:1.4rem">📄</span>
+            <span>获取简历</span>
+          </div>
+          <div class="hero-wechat" onclick="openLinkedinModal()">
+            <span style="font-size:1.4rem">💼</span>
+            <span>领英联系</span>
+          </div>
         </div>
       </div>
       <div class="hero-photo reveal d3">
@@ -1332,7 +1503,7 @@ body {
         <div class="timeline-period">2021.09 — 2024.06</div>
         <div class="timeline-role">会议口译员</div>
         <div class="timeline-company">在校期间·活跃译员</div>
-        <div class="timeline-desc">累计服务90+场国际交流活动，跨行业、跨文化为政府及企业提供高质量口译服务，包括中国-赞比亚建交60周年官方翻译</div>
+        <div class="timeline-desc">累计服务90+场国际交流活动，跨行业、跨文化为政府及企业提供高质量口译服务：包括中国-赞比亚建交60周年官方翻译，贵州茅台，梅赛德斯奔驰等</div>
       </div>
       <div class="timeline-item reveal d3" onclick="openNodePanel('node2')" style="cursor:pointer">
         <div class="timeline-period">2023.03 — 2024.06</div>
@@ -2091,6 +2262,96 @@ if (isMobile) {
     mouseY = e.touches[0].clientY;
   }, { passive: true });
 })();
+
+/* ==============================
+   WECHAT CONTACT MODAL
+============================== */
+function openWechatModal() {
+  document.getElementById('wechatModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeWechatModal() {
+  document.getElementById('wechatModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function copyWechatId() {
+  const wechatId = document.getElementById('wechatId').textContent;
+  navigator.clipboard.writeText(wechatId).then(() => {
+    const btn = document.querySelector('.wechat-copy-btn');
+    btn.textContent = '已复制';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '复制';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+function openResumeModal() {
+  document.getElementById('resumeModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeResumeModal() {
+  document.getElementById('resumeModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function openLinkedinModal() {
+  document.getElementById('linkedinModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLinkedinModal() {
+  document.getElementById('linkedinModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
 </script>
+
+<!-- WeChat Contact Modal -->
+<div class="wechat-modal" id="wechatModal">
+  <div class="wechat-modal-overlay" onclick="closeWechatModal()"></div>
+  <div class="wechat-modal-card">
+    <button class="wechat-modal-close" onclick="closeWechatModal()">×</button>
+    <div class="wechat-modal-header">你好👋，欢迎扫码添加我的微信</div>
+    <div class="wechat-modal-qr">
+      <img src="图片参考/二维码和链接/微信二维码.JPG" alt="微信二维码" id="wechatQrImg">
+    </div>
+    <div class="wechat-modal-info">
+      <div class="wechat-modal-id">
+        <span class="wechat-id-label">微信号</span>
+        <span class="wechat-id-value" id="wechatId">laootiantian</span>
+        <button class="wechat-copy-btn" onclick="copyWechatId()">复制</button>
+      </div>
+      <div class="wechat-modal-tips">长按二维码识别，或复制微信号添加</div>
+    </div>
+  </div>
+</div>
+
+<!-- LinkedIn Modal -->
+<div class="wechat-modal" id="linkedinModal">
+  <div class="wechat-modal-overlay" onclick="closeLinkedinModal()"></div>
+  <div class="wechat-modal-card">
+    <button class="wechat-modal-close" onclick="closeLinkedinModal()">×</button>
+    <div class="wechat-modal-header">Hi👋, Nice Connecting with you here at Linkedin</div>
+    <div class="wechat-modal-qr">
+      <img src="图片参考/二维码和链接/领英.JPG" alt="领英二维码" id="linkedinQrImg">
+    </div>
+    <div class="wechat-modal-info">
+      <div class="wechat-modal-tips">Scan the code or search me</div>
+    </div>
+  </div>
+</div>
+
+<!-- Resume Modal -->
+<div class="wechat-modal" id="resumeModal">
+  <div class="wechat-modal-overlay" onclick="closeResumeModal()"></div>
+  <div class="wechat-modal-card" style="max-width:700px">
+    <button class="wechat-modal-close" onclick="closeResumeModal()">×</button>
+    <div class="wechat-modal-header">📄 中英文简历-Resume</div>
+    <div class="resume-modal-preview">
+      <iframe src="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" width="100%" height="500px"></iframe>
+    </div>
+    <div class="resume-modal-footer">
+      <a href="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" download="刘云江_简历.pdf" class="resume-download-btn">⬇ 下载简历</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
