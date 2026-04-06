@@ -489,9 +489,6 @@ body {
 .metric-num   { font-family:"Bebas Neue",sans-serif; font-size: clamp(1.8rem,4.5vw,3.6rem); color:var(--red); line-height:1; margin-bottom:5px; }
 .metric-label { font-size: clamp(0.76rem,1.4vw,1rem); color:var(--grey-light); line-height:1.4; }
 .metric-sub   { font-size: clamp(0.65rem,1vw,0.82rem); color:var(--grey); margin-top:4px; }
-.metric-imgs { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; justify-content:center; }
-.metric-imgs img { width:70px; height:70px; object-fit:cover; border-radius:8px; cursor:pointer; transition:transform 0.2s; }
-.metric-imgs img:hover { transform:scale(1.08); }
 .company-badge {
   position:absolute; top:8px; left:8px;
   font-size: clamp(0.55rem,0.9vw,0.75rem); padding:2px 8px; border-radius:4px;
@@ -783,7 +780,6 @@ body {
   .metric-num   { font-size:clamp(1.5rem,7vw,2rem)!important; }
   .metric-label { font-size:0.7rem!important; }
   .metric-sub   { font-size:0.62rem!important; }
-  .metric-imgs img { width:50px; height:50px; }
   .company-badge { font-size:0.52rem; padding:2px 5px; }
 
   /* Project */
@@ -1580,8 +1576,6 @@ body {
         <div class="metric-num" data-target="1" data-prefix="NO.">NO.1</div>
         <div class="metric-label">宝可梦卡牌运营指标增长</div>
         <div class="metric-sub">全国排名 Q3-Q4</div>
-        <div class="metric-imgs">
-          <img src="图片参考/数据卡片-宝可梦/Q3-Q4全国宝可梦核心指标达成第一.png" alt="宝可梦" onclick="openMetricPanel(this, '宝可梦卡牌运营指标', 'Q3-Q4 全国排名 NO.1')">
         </div>
       </div>
       <div class="metric-card reveal d2">
@@ -1589,8 +1583,6 @@ body {
         <div class="metric-num" data-target="2" data-prefix="NO.">NO.2</div>
         <div class="metric-label">英雄联盟卡牌运营指标增长</div>
         <div class="metric-sub">全国排名 Q3-Q4</div>
-        <div class="metric-imgs">
-          <img src="图片参考/数据卡片-英雄联盟/Q3-Q4全国英雄联盟卡牌核心指标达成第二.png" alt="英雄联盟" onclick="openMetricPanel(this, '英雄联盟卡牌运营指标', 'Q3-Q4 全国排名 NO.2')">
         </div>
       </div>
       <div class="metric-card reveal d3">
@@ -1604,9 +1596,6 @@ body {
         <div class="metric-num" data-target="42" data-prefix="+" data-suffix=".4%">+42.4%</div>
         <div class="metric-label">广州北区域出货额提升</div>
         <div class="metric-sub">3个月内 · Kraft Heinz</div>
-        <div class="metric-imgs">
-          <img src="图片参考/数据卡片-卡夫出货/品类进攻计划-销量增长.png" alt="出货" onclick="openMetricPanel(this, '广州北区域出货额提升', '+42.4% 3个月内')">
-          <img src="图片参考/数据卡片-卡夫出货/销售团队管理-提升人效开发门店.png" alt="人效" onclick="openMetricPanel(this, '销售团队管理', '提升人效开发门店')">
         </div>
       </div>
       <div class="metric-card reveal d4">
@@ -1614,9 +1603,6 @@ body {
         <div class="metric-num" data-target="35" data-prefix="+" data-suffix="%">+35%</div>
         <div class="metric-label">门店人效提升</div>
         <div class="metric-sub">GTM渠道轮岗期间</div>
-        <div class="metric-imgs">
-          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-积累客情单日爆单.png" alt="客户" onclick="openMetricPanel(this, '餐饮部门客户开发', '积累客情单日爆单')">
-          <img src="图片参考/数据卡片-卡夫人效/餐饮部门客户开发-识别需求精准卖进.png" alt="需求" onclick="openMetricPanel(this, '餐饮部门客户开发', '识别需求精准卖进')">
         </div>
       </div>
       <div class="metric-card reveal d4">
@@ -2370,21 +2356,6 @@ function openMetricLightbox(img) {
   lightboxImg.src = img.src;
   lightboxCounter.textContent = '1 / 1';
   lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function openMetricPanel(img, title, subtitle) {
-  const panel = document.getElementById('nodePanel');
-  document.getElementById('panelTitle').textContent = title;
-  document.getElementById('panelSubtitle').textContent = subtitle;
-  const thumbsContainer = document.getElementById('panelThumbs');
-  const imgsContainer = img.closest('.metric-imgs');
-  const imgs = imgsContainer ? imgsContainer.querySelectorAll('img') : [img];
-  let html = '';
-  imgs.forEach((i) => {
-    html += `<div class="panel-thumb-item"><img src="${i.src}" alt="${i.alt}" onclick="openPanelLightbox(this)"></div>`;
-  });
-  thumbsContainer.innerHTML = html;
-  panel.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 </script>
