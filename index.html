@@ -1056,7 +1056,8 @@ body {
   .wechat-modal-card { padding: 1.5rem; }
   .wechat-modal-qr { display: flex; justify-content: center; align-items: center; }
   .wechat-modal-qr img { width: 180px; height: 180px; }
-  .resume-modal-preview iframe { height: 60vh; }
+  .resume-modal-preview object { height: 75vh; }
+.resume-modal-preview iframe { height: 75vh; }
   .wechat-modal-card { max-width: 95vw !important; }
 }
 
@@ -2485,7 +2486,7 @@ function openMetricLightbox(img) {
     <button class="wechat-modal-close" onclick="closeResumeModal()">×</button>
     <div class="wechat-modal-header">📄 中英文简历-Resume</div>
     <div class="resume-modal-preview">
-      <iframe src="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" width="100%" height="500px"></iframe>
+      <object data="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" type="application/pdf" width="100%" style="height:75vh"></object>
     </div>
     <div class="resume-modal-footer">
       <a href="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" download="刘云江_简历.pdf" class="resume-download-btn">⬇ 下载简历</a>
