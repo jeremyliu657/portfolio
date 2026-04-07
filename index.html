@@ -609,6 +609,8 @@ body {
 .mbti-result-header { display:flex; align-items:flex-start; gap:0.6rem; width:100%; }
 .mbti-result-card:hover { border-color:rgba(200,16,46,0.5); transform:translateY(-2px); }
 .mbti-result-card.expanded .thumb-item { opacity:1; transform:translateY(0); }
+.mbti-result-card.expanded .bridge-drawer { max-height:150px; opacity:1; }
+
 
 .mbti-result-icon { color:var(--red); font-size:1rem; flex-shrink:0; margin-top:2px; }
 .mbti-result-text { font-size:var(--small-size); color:var(--grey-light); line-height:1.4; }
@@ -1714,7 +1716,7 @@ body {
       <div class="mbti-results reveal d3">
         <div class="mbti-section-label" style="text-align:center;margin-bottom:0.6rem">👊 项目成果</div>
         <div class="mbti-results-grid">
-          <div class="mbti-result-card" data-expandable>
+          <div class="mbti-result-card" onclick="this.classList.toggle('expanded')">
             <div class="mbti-result-header"><div class="mbti-result-icon">✓</div><div class="mbti-result-text">Riot官方提案通过<br>活动上线拳头官方微信小程序</div></div>
             <div class="bridge-drawer">
               <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
@@ -1722,7 +1724,7 @@ body {
               </div>
             </div>
           </div>
-          <div class="mbti-result-card" data-expandable>
+          <div class="mbti-result-card" onclick="this.classList.toggle('expanded')">
             <div class="mbti-result-header"><div class="mbti-result-icon">✓</div><div class="mbti-result-text">官方社媒上线宣传<br>玩家产生UGC互动</div></div>
             <div class="bridge-drawer">
               <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
@@ -1733,7 +1735,7 @@ body {
               </div>
             </div>
           </div>
-          <div class="mbti-result-card" data-expandable>
+          <div class="mbti-result-card" onclick="this.classList.toggle('expanded')">
             <div class="mbti-result-header"><div class="mbti-result-icon">✓</div><div class="mbti-result-text">上海英雄联盟卡牌玩家增长全国第一<br>Q3-Q4运营指标全国第二</div></div>
             <div class="bridge-drawer">
               <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
