@@ -592,6 +592,39 @@ body {
 .visual-card-body  { font-size: clamp(0.76rem,1.4vw,0.95rem); color:var(--grey-light); line-height:1.45; }
 
 /* ==============================
+
+/* ===== SLIDE 5: MBTI PROJECT ===== */
+.mbti-layout { display:flex; flex-direction:column; gap:clamp(0.8rem,2vh,1.4rem); max-width:900px; margin:0 auto; }
+.mbti-title { font-family:"Bebas Neue",sans-serif; font-size:clamp(1.3rem,3vw,2.2rem); line-height:1.15; letter-spacing:2px; text-align:center; margin-bottom:0.3rem; }
+.mbti-title span { color:var(--red); display:block; font-size:clamp(0.9rem,2vw,1.5rem); }
+.mbti-section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
+.mbti-section-label { font-size:var(--small-size); color:var(--red); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:0.4rem; }
+.mbti-section-text { font-size:var(--small-size); color:var(--grey-light); line-height:1.65; }
+.mbti-section-text strong { color:var(--white); }
+.mbti-insight-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.6rem; }
+.mbti-o2o { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
+.mbti-o2o-label { font-size:var(--small-size); color:var(--gold); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:0.8rem; text-align:center; }
+.mbti-o2o-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:0.8rem; align-items:start; }
+.mbti-o2o-card { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:10px; padding:0.9rem; }
+.mbti-o2o-card.online { border-left:3px solid var(--red); }
+.mbti-o2o-card.offline { border-left:3px solid var(--gold); }
+.mbti-o2o-card-title { font-size:var(--small-size); font-weight:600; color:#fff; margin-bottom:0.6rem; }
+.mbti-o2o-card-items { display:flex; flex-direction:column; gap:0.35rem; }
+.mbti-o2o-item { font-size:clamp(0.65rem,0.95vw,0.8rem); color:var(--grey-light); line-height:1.4; padding-left:0.5rem; border-left:2px solid rgba(255,255,255,0.1); }
+.mbti-arrow { display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:var(--red); padding-top:2rem; }
+.mbti-bridge { display:flex; align-items:center; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:0.5rem; }
+.mbti-bridge-item { background:rgba(200,16,46,0.1); border:1px solid rgba(200,16,46,0.3); border-radius:8px; padding:0.5rem 0.8rem; text-align:center; min-width:100px; }
+.bridge-label { font-size:0.7rem; color:var(--red); font-weight:600; margin-bottom:2px; }
+.bridge-desc { font-size:0.7rem; color:var(--grey-light); }
+.bridge-arrow { color:var(--grey); font-size:1rem; }
+
+@media (max-width: 768px) {
+  .mbti-o2o-grid { grid-template-columns:1fr; }
+  .mbti-arrow { display:none; }
+  .mbti-bridge { gap:0.4rem; }
+  .mbti-bridge-item { min-width:80px; }
+}
+
    SLIDE 6 — KRAFT HEINZ
 ============================== */
 #slide-6 { background: var(--bg2); }
@@ -1648,23 +1681,81 @@ body {
 <!-- ============ SLIDE 5: PROJECT ============ -->
 <section class="slide" id="slide-5">
   <div class="slide-content">
-    <div class="project-layout">
-      <div>
-        <div class="project-badge reveal d1"><span>★</span> Featured Project · 代表项目</div>
-        <h2 class="project-title reveal d2">🎮 英雄联盟卡牌游戏<br><span>符文战场</span><br>整合营销活动策划</h2>
-        <p class="project-desc reveal d3">主导符文战场微信小程序活动的全生命周期策划——从MBTI流行文化洞察到IP方提案，到线上线下一体化玩家增长体系，最终成功上线拳头官方小程序。</p>
-        <div class="project-results reveal d4">
-          <div class="result-item">🎮 成功向Riot官方提案，活动上线官方微信小程序</div>
-          <div class="result-item">🎮 活动上线后用户活跃度创历史新高</div>
-          <div class="result-item">🎮 上海英雄联盟卡牌玩家增长全国第二</div>
-          <div class="result-item">🎮 打通UGC社交传播机制，实现病毒式扩散</div>
+    <div class="mbti-layout">
+      <!-- Header -->
+      <div class="project-badge reveal d1"><span>★</span> Featured Project · 代表项目</div>
+      <h2 class="mbti-title reveal d2">🎮 英雄联盟符文战场<br><span>“英雄归位，线下碰拳”</span><br>整合营销策划</h2>
+
+      <!-- Background -->
+      <div class="mbti-section reveal d2">
+        <div class="mbti-section-label">📍 项目背景</div>
+        <p class="mbti-section-text">2025年8月符文战场上线的破圈拉新挑战：英雄联盟IP粉丝忠诚度高，但对线下牌店及TCG模式存在认知断层。姚记潮品CEO向内部征求破圈拉新方案。</p>
+      </div>
+
+      <!-- Core Insight -->
+      <div class="mbti-section reveal d3">
+        <div class="mbti-section-label">💡 核心洞察</div>
+        <p class="mbti-section-text"><strong>英雄池 ≠ 偶然选择，是玩家性格的自我镜像。</strong> MBTI式性格测试是当下流行文化，将"英雄池"与MBTI结合，是打破TCG高门槛认知的极佳切入点。</p>
+        <div class="mbti-insight-tags">
+          <span class="insight-tag">英雄池 = 性格投射</span>
+          <span class="insight-tag">MBTI = 现成社交货币</span>
+          <span class="insight-tag">测试 = 线上流量抓手</span>
         </div>
       </div>
-      <div class="project-visual">
-        <div class="visual-card reveal d2"><div class="visual-card-title">💡 流行文化洞察</div><div class="visual-card-body">捕捉中国Z世代对MBTI测试的流行文化热潮，将玩家性格与LOL英雄人格有机结合</div></div>
-        <div class="visual-card reveal d3"><div class="visual-card-title">🎮 O2O整合营销策略</div><div class="visual-card-body">设计「线上趣味测试 + 线下到店游玩」O2O模式，打通线上线下体验壁垒</div></div>
-        <div class="visual-card reveal d4"><div class="visual-card-title">📈 品牌执行</div><div class="visual-card-body">深度调研Riot Games品牌风格，配合IP方要求进行多轮方案迭代，确保品牌调性一致</div></div>
-        <div class="visual-card reveal d5"><div class="visual-card-title">🌱 运营增长</div><div class="visual-card-body">引入社交媒体UGC分享机制，持续优化玩家线下游玩体验，推动社区自发传播</div></div>
+
+      <!-- O2O Flow -->
+      <div class="mbti-o2o reveal d3">
+        <div class="mbti-o2o-label">🎯 O2O 整合营销路径</div>
+        <div class="mbti-o2o-grid">
+          <div class="mbti-o2o-card online">
+            <div class="mbti-o2o-card-title">📱 线上：探寻你的"符文本命"</div>
+            <div class="mbti-o2o-card-items">
+              <div class="mbti-o2o-item">→ 核心主张："看透你的英雄池，读懂你的竞技人格"</div>
+              <div class="mbti-o2o-item">→ H5互动测试：输入常用英雄 → 生成专属"英雄性格报告"</div>
+              <div class="mbti-o2o-item">→ 社交裂变：符文阵营海报 → 诱发朋友圈二次传播</div>
+              <div class="mbti-o2o-item">→ 引流转化："牌店集结令"电子礼券 → 引导至线下终端</div>
+            </div>
+          </div>
+          <div class="mbti-arrow">→</div>
+          <div class="mbti-o2o-card offline">
+            <div class="mbti-o2o-card-title">🏠 线下：英雄回家，线下碰拳</div>
+            <div class="mbti-o2o-card-items">
+              <div class="mbti-o2o-item">→ 场景营造：牌店包装为"符文驿站"，打造回家归属感</div>
+              <div class="mbti-o2o-item">→ 个性化教学：依据"性格报告"推荐匹配TCG起始卡组</div>
+              <div class="mbti-o2o-item">→ 碰拳礼社交：社区特有仪式感，降低陌生感</div>
+              <div class="mbti-o2o-item">→ 留存机制：首场对局解锁限定卡包，完成身份迁移</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theory Bridge -->
+      <div class="mbti-section reveal d4">
+        <div class="mbti-section-label">🔗 理论支撑：三种性格的桥梁</div>
+        <div class="mbti-bridge">
+          <div class="mbti-bridge-item">
+            <div class="bridge-label">现实性格</div>
+            <div class="bridge-desc">J型稳健 / P型灵活</div>
+          </div>
+          <div class="bridge-arrow">→</div>
+          <div class="mbti-bridge-item">
+            <div class="bridge-label">英雄池性格</div>
+            <div class="bridge-desc">本命英雄 = 自我镜像</div>
+          </div>
+          <div class="bridge-arrow">→</div>
+          <div class="mbti-bridge-item">
+            <div class="bridge-label">TCG卡牌性格</div>
+            <div class="bridge-desc">快攻 / 控制 / Combo</div>
+          </div>
+        </div>
+        <p class="mbti-section-text" style="margin-top:0.6rem;font-size:var(--small-size)">MBTI提供现成框架，让三种性格的转化自然发生，完成从IP粉丝到TCG玩家的身份认同迁移。</p>
+      </div>
+
+      <!-- Results -->
+      <div class="project-results reveal d5">
+        <div class="result-item">✓ Riot官方提案通过，活动上线拳头官方微信小程序</div>
+        <div class="result-item">✓ 玩家UGC内容爆发式传播，社交裂变效果超预期</div>
+        <div class="result-item">✓ 上海英雄联盟卡牌玩家增长全国第二 · Q3-Q4运营指标全国第一</div>
       </div>
     </div>
   </div>
