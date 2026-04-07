@@ -606,14 +606,14 @@ body {
 .mbti-results { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
 .mbti-results-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
 .mbti-result-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:0.8rem; display:flex; flex-direction:column; gap:0.5rem; transition:all 0.3s; cursor:pointer; }
-.mbti-result-header { display:flex; align-items:flex-start; gap:0.6rem; width:100%; }
+.mbti-result-header { display:flex; align-items:center; gap:0.6rem; width:100%; justify-content:center; }
 .mbti-result-card:hover { border-color:rgba(200,16,46,0.5); transform:translateY(-2px); }
 .mbti-result-card.expanded .thumb-item { opacity:1; transform:translateY(0); }
 .mbti-result-card.expanded .bridge-drawer { max-height:150px; opacity:1; }
 
 
 .mbti-result-icon { color:var(--red); font-size:1rem; flex-shrink:0; margin-top:2px; }
-.mbti-result-text { font-size:var(--small-size); color:var(--grey-light); line-height:1.4; }
+.mbti-result-text { font-size:var(--small-size); color:var(--grey-light); line-height:1.4; text-align:center; }
 
 .mbti-o2o-label { font-size:var(--small-size); color:var(--gold); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:0.8rem; text-align:center; }
 .mbti-o2o-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:0.8rem; align-items:start; }
