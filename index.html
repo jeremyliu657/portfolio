@@ -605,8 +605,11 @@ body {
 .mbti-o2o { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
 .mbti-results { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
 .mbti-results-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
-.mbti-result-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:0.8rem; display:flex; align-items:flex-start; gap:0.6rem; transition:all 0.3s; cursor:pointer; }
+.mbti-result-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:0.8rem; display:flex; flex-direction:column; gap:0.5rem; transition:all 0.3s; cursor:pointer; }
+.mbti-result-header { display:flex; align-items:flex-start; gap:0.6rem; width:100%; }
 .mbti-result-card:hover { border-color:rgba(200,16,46,0.5); transform:translateY(-2px); }
+.mbti-result-card.expanded .thumb-item { opacity:1; transform:translateY(0); }
+
 .mbti-result-icon { color:var(--red); font-size:1rem; flex-shrink:0; margin-top:2px; }
 .mbti-result-text { font-size:var(--small-size); color:var(--grey-light); line-height:1.4; }
 
@@ -1712,8 +1715,7 @@ body {
         <div class="mbti-section-label" style="text-align:center;margin-bottom:0.6rem">👊 项目成果</div>
         <div class="mbti-results-grid">
           <div class="mbti-result-card" data-expandable>
-            <div class="mbti-result-icon">✓</div>
-            <div class="mbti-result-text">Riot官方提案通过<br>活动上线拳头官方微信小程序</div>
+            <div class="mbti-result-header"><div class="mbti-result-icon">✓</div><div class="mbti-result-text">Riot官方提案通过<br>活动上线拳头官方微信小程序</div></div>
             <div class="bridge-drawer">
               <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
                 <img src="图片参考/项目成果/Riot官方提案/英雄联盟TCG符文战场-小程序整合营销活动上线，引爆玩家热情.png" alt="Riot官方提案">
@@ -1721,8 +1723,7 @@ body {
             </div>
           </div>
           <div class="mbti-result-card" data-expandable>
-            <div class="mbti-result-icon">✓</div>
-            <div class="mbti-result-text">官方社媒上线宣传<br>玩家产生UGC互动</div>
+            <div class="mbti-result-header"><div class="mbti-result-icon">✓</div><div class="mbti-result-text">官方社媒上线宣传<br>玩家产生UGC互动</div></div>
             <div class="bridge-drawer">
               <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
                 <img src="图片参考/项目成果/UGC社交裂变/玩家互动.jpg" alt="玩家互动">
@@ -1733,8 +1734,7 @@ body {
             </div>
           </div>
           <div class="mbti-result-card" data-expandable>
-            <div class="mbti-result-icon">✓</div>
-            <div class="mbti-result-text">上海英雄联盟卡牌玩家增长全国第一<br>Q3-Q4运营指标全国第二</div>
+            <div class="mbti-result-header"><div class="mbti-result-icon">✓</div><div class="mbti-result-text">上海英雄联盟卡牌玩家增长全国第一<br>Q3-Q4运营指标全国第二</div></div>
             <div class="bridge-drawer">
               <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
                 <img src="图片参考/项目成果/上海玩家增长/Q3-Q4全国英雄联盟卡牌核心指标达成第二.png" alt="上海玩家增长">
