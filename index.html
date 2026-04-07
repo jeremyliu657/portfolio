@@ -662,7 +662,9 @@ body {
   .bridge-arrow { display:none !important; }
   .bridge-label { font-size:0.6rem !important; }
   .bridge-desc { font-size:0.55rem !important; }
-  .mbti-o2o-grid { grid-template-columns:1fr !important; }
+  .mbti-o2o { overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:0.5rem; }
+  .mbti-o2o-grid { display:flex !important; gap:0.5rem !important; min-width:max-content; }
+  .mbti-o2o-card { min-width:280px; scroll-snap-align:center; flex-shrink:0; }
   .mbti-o2o-card { padding:0.6rem !important; }
   .mbti-o2o-card-title { font-size:0.7rem !important; }
   .mbti-o2o-item { font-size:0.62rem !important; }
