@@ -63,7 +63,8 @@ body {
   .slide {
     width: 100%; min-height: 100dvh;
     display: flex; flex-direction: column; position: relative;
-    overflow: visible;
+    overflow-y: auto;
+    scroll-snap-align: none;
   }
   .slide-content {
     flex: 1; display: flex; flex-direction: column;
@@ -677,11 +678,7 @@ body {
   .insight-tag { font-size:0.6rem !important; padding:0.2rem 0.5rem !important; }
   /* slide-5 mbti-layout 移动端滚动修复 */
   .mbti-layout {
-    max-height: calc(100dvh - 5.5rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.5rem;
+    overflow-y: visible;
   }
 }
 
