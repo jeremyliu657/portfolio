@@ -603,7 +603,8 @@ body {
 .mbti-section-text strong { color:var(--white); }
 .mbti-insight-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.6rem; }
 .mbti-o2o { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
-.mbti-results { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
+.mbti-results { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
+.mbti-results-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
 .mbti-result-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:0.8rem; display:flex; align-items:flex-start; gap:0.6rem; transition:all 0.3s; }
 .mbti-result-card:hover { border-color:rgba(200,16,46,0.5); transform:translateY(-2px); }
 .mbti-result-icon { color:var(--red); font-size:1rem; flex-shrink:0; margin-top:2px; }
@@ -1706,6 +1707,25 @@ body {
       <div class="project-badge reveal d1"><span>★</span> Featured Project · 代表项目</div>
       <h2 class="mbti-title reveal d2">🎮 英雄联盟TCG符文战场 小程序活动上线<br><span>"测试你的英雄人格"——流行文化+游戏文化 整合营销项目</span></h2>
 
+      <!-- Results -->
+      <div class="mbti-results reveal d3">
+        <div class="mbti-section-label" style="text-align:center;margin-bottom:0.6rem">👊 项目成果</div>
+        <div class="mbti-results-grid">
+          <div class="mbti-result-card">
+            <div class="mbti-result-icon">✓</div>
+            <div class="mbti-result-text">Riot官方提案通过<br>活动上线拳头官方微信小程序</div>
+          </div>
+          <div class="mbti-result-card">
+            <div class="mbti-result-icon">✓</div>
+            <div class="mbti-result-text">玩家UGC内容爆发式传播<br>社交裂变效果超预期</div>
+          </div>
+          <div class="mbti-result-card">
+            <div class="mbti-result-icon">✓</div>
+            <div class="mbti-result-text">上海英雄联盟卡牌玩家增长全国第二<br>Q3-Q4运营指标全国第一</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Background -->
       <div class="mbti-section reveal d2">
         <div class="mbti-section-label">📍 项目背景</div>
@@ -1785,21 +1805,6 @@ body {
         </div>
       </div>
 
-      <!-- Results -->
-      <div class="mbti-results reveal d5">
-        <div class="mbti-result-card">
-          <div class="mbti-result-icon">✓</div>
-          <div class="mbti-result-text">Riot官方提案通过<br>活动上线拳头官方微信小程序</div>
-        </div>
-        <div class="mbti-result-card">
-          <div class="mbti-result-icon">✓</div>
-          <div class="mbti-result-text">玩家UGC内容爆发式传播<br>社交裂变效果超预期</div>
-        </div>
-        <div class="mbti-result-card">
-          <div class="mbti-result-icon">✓</div>
-          <div class="mbti-result-text">上海英雄联盟卡牌玩家增长全国第二<br>Q3-Q4运营指标全国第一</div>
-        </div>
-      </div>
     </div>
   </div>
   <div class="slide-num">05 / 09</div>
