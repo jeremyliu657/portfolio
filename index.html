@@ -598,7 +598,7 @@ body {
 .mbti-title { font-family:"Bebas Neue",sans-serif; font-size:clamp(1.3rem,3vw,2.2rem); line-height:1.15; letter-spacing:2px; text-align:center; margin-bottom:0.3rem; }
 .mbti-title span { color:var(--red); display:block; font-size:clamp(0.9rem,2vw,1.5rem); }
 .mbti-section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:clamp(0.8rem,1.5vw,1.2rem); }
-.mbti-section-label { font-size:var(--small-size); color:var(--red); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:0.4rem; }
+.mbti-section-label { font-size:var(--small-size); color:var(--red); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:0.4rem; text-align:center; }
 .mbti-section-text { font-size:var(--small-size); color:var(--grey-light); line-height:1.65; }
 .mbti-section-text strong { color:var(--white); }
 .mbti-insight-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-top:0.6rem; }
@@ -634,6 +634,8 @@ body {
 .bridge-drawer { max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; margin-top:0; }
 .mbti-bridge-item.expanded .bridge-drawer { max-height:120px; opacity:1; margin-top:0.5rem; }
 .bridge-drawer .thumb-item { width:80px; height:60px; }
+.bridge-drawer-imgs { display:flex; gap:8px; justify-content:center; }
+
 .bridge-drawer img { width:100%; height:100%; object-fit:cover; border-radius:6px; }
 .mbti-bridge-item.expanded .thumb-item { opacity:1; transform:translateY(0); }
 
@@ -1727,11 +1729,13 @@ body {
           <div class="mbti-result-card" onclick="this.classList.toggle('expanded')">
             <div class="mbti-result-header"><div class="mbti-result-icon">✓</div><div class="mbti-result-text">官方社媒上线宣传<br>玩家产生UGC互动</div></div>
             <div class="bridge-drawer">
-              <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
-                <img src="图片参考/项目成果/UGC社交裂变/玩家互动.jpg" alt="玩家互动">
-              </div>
-              <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
-                <img src="图片参考/项目成果/UGC社交裂变/符文战场社媒发布活动.jpg" alt="符文战场社媒发布活动">
+              <div class="bridge-drawer-imgs">
+                <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
+                  <img src="图片参考/项目成果/UGC社交裂变/玩家互动.jpg" alt="玩家互动">
+                </div>
+                <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
+                  <img src="图片参考/项目成果/UGC社交裂变/符文战场社媒发布活动.jpg" alt="符文战场社媒发布活动">
+                </div>
               </div>
             </div>
           </div>
