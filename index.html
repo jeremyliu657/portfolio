@@ -696,7 +696,11 @@ body {
 .contact-item-label { font-size: clamp(0.55rem,0.8vw,0.7rem); letter-spacing:2px; color:var(--grey); text-transform:uppercase; }
 .contact-item-value { font-size:var(--body-size); color:var(--white); font-weight:500; }
 .contact-divider { width:1px; height:38px; background:var(--border); }
-.contact-detail { display:flex; gap:0.8rem; justify-content:center; align-items:center; margin-top:1.2rem; font-size:var(--small-size); color:var(--grey); flex-wrap:wrap; }
+.contact-detail {
+.contact-link { color:var(--grey); text-decoration:none; transition:color 0.2s; cursor:pointer; }
+.contact-link:hover { color:var(--white); }
+.contact-link.copied { color:var(--green); }
+ display:flex; gap:0.8rem; justify-content:center; align-items:center; margin-top:1.2rem; font-size:var(--small-size); color:var(--grey); flex-wrap:wrap; }
 .contact-sep { color:var(--border); }
 .bottom-logo { position:absolute; bottom: clamp(14px,2.5vh,28px); right: clamp(1.2rem,4vw,4.5rem); font-family:"Bebas Neue",sans-serif; font-size: clamp(0.72rem,1.3vw,1rem); color:rgba(255,255,255,0.12); letter-spacing:3px; }
 
@@ -1793,11 +1797,11 @@ body {
         </div>
       </div>
       <div class="contact-detail reveal d5">
-        <span>📞 (+86) 15102866373</span>
+        <a href="tel:+8615102866373" class="contact-link" onclick="copyToClipboard('+8615102866373', this)"><span>📞</span> <strong>(+86) 15102866373</strong></a>
         <span class="contact-sep">|</span>
-        <span>✉️ jeremyliu657@gmail.com</span>
+        <a href="mailto:jeremyliu657@gmail.com" class="contact-link" onclick="copyToClipboard('jeremyliu657@gmail.com', this)"><span>✉️</span> jeremyliu657@gmail.com</a>
         <span class="contact-sep">|</span>
-        <span>👔 http://linkedin.com/in/jeremy00l</span>
+        <a href="https://linkedin.com/in/jeremy00l" target="_blank" class="contact-link"><span>👔</span> LinkedIn</a>
       </div>
     </div>
   </div>
@@ -2412,6 +2416,13 @@ if (isMobile) {
 /* ==============================
    WECHAT CONTACT MODAL
 ============================== */
+function copyToClipboard(text, el) {
+  navigator.clipboard.writeText(text).then(() => {
+    el.classList.add('copied');
+    setTimeout(() => el.classList.remove('copied'), 1500);
+  });
+}
+
 function openWechatModal() {
   document.getElementById('wechatModal').classList.add('active');
   document.body.style.overflow = 'hidden';
