@@ -1709,7 +1709,7 @@ body {
       <div class="mbti-section reveal d3">
         <div class="mbti-section-label">🔗 核心洞察：流行文化和游戏文化的交集</div>
         <div class="mbti-bridge">
-          <div class="mbti-bridge-item" data-expandable onclick="toggleBridgeCard(this)">
+          <div class="mbti-bridge-item" data-expandable>
             <div class="bridge-label">现实性格</div>
             <div class="bridge-desc">J型稳健 / P型灵活</div>
             <div class="bridge-drawer">
@@ -1719,7 +1719,7 @@ body {
             </div>
           </div>
           <div class="bridge-arrow">→</div>
-          <div class="mbti-bridge-item" data-expandable onclick="toggleBridgeCard(this)">
+          <div class="mbti-bridge-item" data-expandable>
             <div class="bridge-label">英雄池性格</div>
             <div class="bridge-desc">本命英雄 = 自我镜像</div>
             <div class="bridge-drawer">
@@ -1729,7 +1729,7 @@ body {
             </div>
           </div>
           <div class="bridge-arrow">→</div>
-          <div class="mbti-bridge-item" data-expandable onclick="toggleBridgeCard(this)">
+          <div class="mbti-bridge-item" data-expandable>
             <div class="bridge-label">TCG卡牌性格</div>
             <div class="bridge-desc">快攻 / 控制 / Combo</div>
             <div class="bridge-drawer">
@@ -1739,7 +1739,7 @@ body {
             </div>
           </div>
           <div class="bridge-arrow">→</div>
-          <div class="mbti-bridge-item intersection" data-expandable onclick="toggleBridgeCard(this)">
+          <div class="mbti-bridge-item intersection" data-expandable>
             <div class="bridge-label">性格交集</div>
             <div class="bridge-desc">三者叠加 = 完整画像</div>
             <div class="bridge-drawer">
@@ -2004,7 +2004,7 @@ slides.forEach(s => observer.observe(s));
 document.querySelectorAll('[data-expandable]').forEach(card => {
   card.addEventListener('click', function(e) {
     // Don't collapse if clicking inside detail
-    if (!e.target.closest('.thumb-item') && !e.target.closest('.case-timeline-imgs')) {
+    if (!e.target.closest('.thumb-item') && !e.target.closest('.case-timeline-imgs') && !e.target.closest('.bridge-drawer')) {
       this.classList.toggle('expanded');
     }
   });
