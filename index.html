@@ -680,6 +680,11 @@ body {
   /* slide-5 mbti-layout 移动端滚动修复 */
   .mbti-layout {
     overflow-y: visible;
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+  }
+  .mbti-layout.scale-down {
+    transform: scale(var(--slide5-scale, 1));
   }
 }
 
@@ -2507,6 +2512,29 @@ if (isMobile) {
       }
     });
   }, {passive:true});
+
+  // slide-5 auto-scale to fit mobile viewport
+  function fitSlide5() {
+    const slide5 = document.getElementById('slide-5');
+    if (!slide5) return;
+    const layout = slide5.querySelector('.mbti-layout');
+    if (!layout) return;
+    const content = slide5.querySelector('.slide-content');
+    if (!content) return;
+    const availableH = content.clientHeight;
+    layout.style.transform = 'scale(1)';
+    layout.classList.remove('scale-down');
+    const neededH = layout.scrollHeight;
+    if (neededH > availableH) {
+      const scale = availableH / neededH;
+      const safeScale = Math.min(scale, 1) - 0.01;
+      layout.style.setProperty('--slide5-scale', safeScale);
+      layout.classList.add('scale-down');
+    }
+  }
+  window.addEventListener('resize', fitSlide5);
+  window.addEventListener('orientationchange', () => setTimeout(fitSlide5, 100));
+  fitSlide5();
 }
 </script>
 
