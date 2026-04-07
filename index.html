@@ -564,12 +564,22 @@ body {
 .case-tier { font-size:1.1rem; font-weight:700; color:var(--gold); text-align:center; margin-bottom:0.3rem; }
 .case-timeline-title { font-size:0.9rem; font-weight:600; color:#fff; text-align:center; margin-bottom:0.5rem; }
 .case-timeline-desc { font-size:0.75rem; color:var(--grey); text-align:center; line-height:1.5; }
-.case-timeline-imgs { display:flex; gap:4px; margin-top:0.5rem; justify-content:center; flex-wrap:wrap; }
-.case-timeline-imgs .thumb-item { flex:none; opacity:1; transform:none; }
-.case-timeline-imgs { max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; }
-.case-timeline-item.expanded .case-timeline-imgs { max-height:200px; opacity:1; }
-.case-timeline-imgs img { width:55px; height:40px; object-fit:cover; border-radius:4px; cursor:pointer; transition:transform 0.2s; }
-.case-timeline-imgs img:hover { transform:scale(1.08); }
+.case-timeline-drawer { max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; }
+.case-timeline-item.expanded .case-timeline-drawer { max-height:400px; opacity:1; }
+.case-timeline-drawer {
+  background:rgba(0,0,0,0.3);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:0.5rem;
+  margin-top:0.5rem;
+  display:flex;
+  gap:6px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.case-timeline-drawer .thumb-item { flex:none; opacity:1; transform:none; }
+.case-timeline-drawer img { width:120px; height:80px; object-fit:cover; border-radius:4px; cursor:pointer; transition:transform 0.2s; }
+.case-timeline-drawer img:hover { transform:scale(1.05); }
 .case-insights { display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap; margin-top:0.8rem; }
 .case-swipe-hint { display:none; text-align:center; margin-bottom:0.5rem; color:var(--grey); font-size:0.7rem; }
 .case-swipe-hint::after { content:"→"; display:inline-block; animation:swipeHint 1.5s ease-in-out infinite; margin-left:0.5rem; }
@@ -1751,50 +1761,50 @@ body {
     </div>
     <div class="case-swipe-hint">向右滑动陪伴客户一起成长</div>
     <div class="case-timeline">
-      <div class="case-timeline-item reveal d2" data-expandable onclick="toggleTimelineCard(this)">
+      <div class="case-timeline-item reveal d2" data-expandable>
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2025.08</div>
         <div class="case-timeline-content">
           <div class="case-tier">T4 → T3</div>
           <div class="case-timeline-title">接手酷猫，共同创作起点</div>
           <div class="case-timeline-desc">90%中尾部门店，无资源支持。与客户建立信任，共同创作打磨活动，社群活力开始激发。</div>
-          <div class="case-timeline-imgs highlight-detail"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/我开始和客户一起共创，结合客户和玩家需求，设计提升玩家体验的一系列活动.png" alt="共创活动"></div><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/接手酷猫卡牌，所有人都不看好，但我看到了门店社群和经营者的巨大潜力，我们一起共创更体验更丰富的社区活动.JPEG" alt="社群潜力"></div></div>
+          <div class="case-timeline-drawer highlight-detail"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/我开始和客户一起共创，结合客户和玩家需求，设计提升玩家体验的一系列活动.png" alt="共创活动"></div><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-08月/接手酷猫卡牌，所有人都不看好，但我看到了门店社群和经营者的巨大潜力，我们一起共创更体验更丰富的社区活动.JPEG" alt="社群潜力"></div></div>
         </div>
       </div>
-      <div class="case-timeline-item reveal d3" data-expandable onclick="toggleTimelineCard(this)">
+      <div class="case-timeline-item reveal d3" data-expandable>
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2025.10</div>
         <div class="case-timeline-content">
           <div class="case-tier">T3 → T2</div>
           <div class="case-timeline-title">获得关注，资源开始倾斜</div>
           <div class="case-timeline-desc">共同创作成果显现，开始获得大区关注和资源扶持。配合官方大型活动+社区活动，门店升级。</div>
-          <div class="case-timeline-imgs">
+          <div class="case-timeline-drawer">
             <div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-10月/英雄联盟S赛线下观赛联动-随着运营水平的上升，在我的推动下，酷猫卡牌逐渐开始配合官方活动.JPEG" alt="英雄联盟S赛线下观赛联动-随着运营水平的上升，在我的推动下，酷猫卡牌逐渐开始配合官方活动"></div>
             <div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-10月/英雄联盟S赛线下观赛联动-我们一起共创，在官方活动基础上设计一系列特别活动，进一步强化玩家体验。门店在上海社群的口碑逐渐提升.JPEG" alt="英雄联盟S赛线下观赛联动-我们一起共创，在官方活动基础上设计一系列特别活动，进一步强化玩家体验。门店在上海社群的口碑逐渐提升"></div>
           </div>
         </div>
       </div>
-      <div class="case-timeline-item reveal d4" data-expandable onclick="toggleTimelineCard(this)">
+      <div class="case-timeline-item reveal d4" data-expandable>
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2025.11</div>
         <div class="case-timeline-content">
           <div class="case-tier">T2 稳定</div>
           <div class="case-timeline-title">社群驱动增长</div>
           <div class="case-timeline-desc">社群氛围持续向好，玩家自发传播，口碑效应显现。运营指标稳步提升。</div>
-          <div class="case-timeline-imgs">
+          <div class="case-timeline-drawer">
             <div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-11月/英雄联盟云顶之弈线下观赛联动-社群口碑上升后，酷猫卡牌有了一定资源加持.JPEG" alt="英雄联盟云顶之弈线下观赛联动-社群口碑上升后，酷猫卡牌有了一定资源加持"></div>
             <div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-11月/英雄联盟卡牌第二弹商场线下快闪活动-并且在合理的范围内，自身也提升了经费投入力度。各方面运营指标开始大幅度提升.JPEG" alt="英雄联盟卡牌第二弹商场线下快闪活动-并且在合理的范围内，自身也提升了经费投入力度。各方面运营指标开始大幅度提升"></div>
           </div>
         </div>
       </div>
-      <div class="case-timeline-item reveal d5" data-expandable onclick="toggleTimelineCard(this)">
+      <div class="case-timeline-item reveal d5" data-expandable>
         <div class="case-timeline-dot"></div>
         <div class="case-timeline-period">2026.01</div>
         <div class="case-timeline-content">
           <div class="case-tier">🏆 T1 全国头部</div>
           <div class="case-timeline-title">标杆门店诞生</div>
           <div class="case-timeline-desc">在社区的支持下，酷猫卡牌成为全国T1头部门店。证明：社群运营比砸钱更有效。</div>
-          <div class="case-timeline-imgs">
+          <div class="case-timeline-drawer">
             <div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/酷猫时间线-01月/和客户共同成长，酷猫卡片从T4跃迁至全国头部T1门店，成为共建玩家社区精神的典范.jpg" alt="和客户共同成长，酷猫卡片从T4跃迁至全国头部T1门店，成为共建玩家社区精神的典范"></div>
           </div>
         </div>
@@ -2073,7 +2083,7 @@ slides.forEach(s => observer.observe(s));
 document.querySelectorAll('[data-expandable]').forEach(card => {
   card.addEventListener('click', function(e) {
     // Don't collapse if clicking inside detail
-    if (!e.target.closest('.thumb-item') && !e.target.closest('.case-timeline-imgs') && !e.target.closest('.bridge-drawer')) {
+    if (!e.target.closest('.thumb-item') && !e.target.closest('.case-timeline-drawer') && !e.target.closest('.bridge-drawer')) {
       this.classList.toggle('expanded');
     }
   });
