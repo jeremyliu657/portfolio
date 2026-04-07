@@ -675,6 +675,14 @@ body {
   .bridge-drawer-imgs { gap:4px !important; }
   .mbti-insight-tags { gap:0.3rem !important; justify-content:center !important; }
   .insight-tag { font-size:0.6rem !important; padding:0.2rem 0.5rem !important; }
+  /* slide-5 mbti-layout 移动端滚动修复 */
+  .mbti-layout {
+    max-height: calc(100dvh - 5.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
 }
 
    SLIDE 6 — KRAFT HEINZ
