@@ -615,6 +615,15 @@ body {
 .mbti-bridge { display:flex; align-items:center; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:0.5rem; }
 .mbti-bridge-item { background:rgba(200,16,46,0.1); border:1px solid rgba(200,16,46,0.3); border-radius:8px; padding:0.5rem 0.8rem; text-align:center; min-width:100px; }
 .mbti-bridge-item.intersection { background:rgba(200,155,60,0.2); border:1px solid var(--gold); position:relative; }
+
+/* Bridge drawer */
+.mbti-bridge-item { cursor:pointer; transition:all 0.3s; }
+.mbti-bridge-item:hover { transform:translateY(-2px); }
+.bridge-drawer { max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; margin-top:0; }
+.mbti-bridge-item.expanded .bridge-drawer { max-height:120px; opacity:1; margin-top:0.5rem; }
+.bridge-drawer .thumb-item { width:80px; height:60px; }
+.bridge-drawer img { width:100%; height:100%; object-fit:cover; border-radius:6px; }
+
 .mbti-bridge-item.intersection .bridge-label { color:var(--gold); }
 
 
@@ -1700,24 +1709,44 @@ body {
       <div class="mbti-section reveal d3">
         <div class="mbti-section-label">🔗 核心洞察：流行文化和游戏文化的交集</div>
         <div class="mbti-bridge">
-          <div class="mbti-bridge-item">
+          <div class="mbti-bridge-item" data-expandable onclick="toggleBridgeCard(this)">
             <div class="bridge-label">现实性格</div>
             <div class="bridge-desc">J型稳健 / P型灵活</div>
+            <div class="bridge-drawer">
+              <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
+                <img src="图片参考/性格交集-理论支撑/MBTI测试界面.jpg" alt="MBTI测试">
+              </div>
+            </div>
           </div>
           <div class="bridge-arrow">→</div>
-          <div class="mbti-bridge-item">
+          <div class="mbti-bridge-item" data-expandable onclick="toggleBridgeCard(this)">
             <div class="bridge-label">英雄池性格</div>
             <div class="bridge-desc">本命英雄 = 自我镜像</div>
+            <div class="bridge-drawer">
+              <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
+                <img src="图片参考/性格交集-理论支撑/LOL英雄选择.jpg" alt="LOL英雄选择">
+              </div>
+            </div>
           </div>
           <div class="bridge-arrow">→</div>
-          <div class="mbti-bridge-item">
+          <div class="mbti-bridge-item" data-expandable onclick="toggleBridgeCard(this)">
             <div class="bridge-label">TCG卡牌性格</div>
             <div class="bridge-desc">快攻 / 控制 / Combo</div>
+            <div class="bridge-drawer">
+              <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
+                <img src="图片参考/性格交集-理论支撑/TCG卡牌策略.jpg" alt="TCG卡牌策略">
+              </div>
+            </div>
           </div>
           <div class="bridge-arrow">→</div>
-          <div class="mbti-bridge-item intersection">
+          <div class="mbti-bridge-item intersection" data-expandable onclick="toggleBridgeCard(this)">
             <div class="bridge-label">性格交集</div>
             <div class="bridge-desc">三者叠加 = 完整画像</div>
+            <div class="bridge-drawer">
+              <div class="thumb-item" onclick="event.stopPropagation();openLightbox(this)">
+                <img src="图片参考/性格交集-理论支撑/英雄性格报告.jpg" alt="英雄性格报告">
+              </div>
+            </div>
           </div>
         </div>
         <p class="mbti-section-text" style="margin-top:0.6rem;font-size:var(--small-size)">英雄联盟玩家的性格、TCG卡牌游戏玩家的性格、玩家生活的MBTI性格三者存在天然联系。让三种性格的转化自然发生，完成从IP粉丝到TCG玩家的身份认同迁移。激发玩家情感连接，实现游戏破圈和用户增长。</p>
@@ -2531,6 +2560,11 @@ function copyToClipboard(text, el) {
     el.classList.add('copied');
     setTimeout(() => el.classList.remove('copied'), 1500);
   });
+}
+
+
+function toggleBridgeCard(el) {
+  el.classList.toggle('expanded');
 }
 
 function openWechatModal() {
