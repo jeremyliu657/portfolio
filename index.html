@@ -723,16 +723,33 @@ body {
 .kh-card-icon  { font-size: clamp(1.1rem,2vw,1.6rem); flex-shrink:0; margin-top:2px; }
 .kh-card-title { font-size: clamp(0.88rem,1.7vw,1.1rem); font-weight:600; color:var(--white); margin-bottom:2px; }
 .kh-card-desc  { font-size: clamp(0.76rem,1.4vw,1rem); color:var(--grey); line-height:1.5; }
-.kh-stat-drawer, .kh-drawer { display:none; max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; }
+.kh-stat-drawer, .kh-drawer { max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; }
 .kh-stat-card.expanded .kh-stat-drawer,
-.kh-card.expanded .kh-drawer { display:flex; max-height:400px; opacity:1; }
-.kh-stat-drawer { justify-content:center; margin-top:0.5rem; }
-.kh-stat-drawer-imgs { display:flex; gap:6px; justify-content:center; flex-wrap:wrap; }
-.kh-stat-drawer .thumb-item, .kh-drawer .thumb-item { flex:none; }
+.kh-card.expanded .kh-drawer { max-height:500px; opacity:1; }
+.kh-stat-drawer {
+  display:flex;
+  justify-content:center;
+  margin-top:0.5rem;
+  background:rgba(0,0,0,0.3);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:0.5rem;
+}
+.kh-drawer {
+  display:flex;
+  justify-content:center;
+  margin-top:0.6rem;
+  background:rgba(0,0,0,0.3);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:0.5rem;
+}
+.kh-stat-drawer-imgs, .kh-drawer-imgs { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
+.kh-stat-drawer .thumb-item, .kh-drawer .thumb-item { flex:none; opacity:1; transform:none; }
 .kh-stat-drawer img, .kh-drawer img { object-fit:cover; border-radius:6px; cursor:pointer; transition:transform 0.2s; }
-.kh-stat-drawer img:hover, .kh-drawer img:hover { transform:scale(1.04); }
+.kh-stat-drawer img:hover, .kh-drawer img:hover { transform:scale(1.05); }
 .kh-stat-drawer img { width:100px; height:70px; }
-.kh-drawer img { width:160px; height:100px; }
+.kh-drawer img { width:150px; height:95px; }
 
 /* ==============================
    SLIDE 7 — SKILLS
