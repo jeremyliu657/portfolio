@@ -701,14 +701,14 @@ body {
   content:""; position:absolute; inset:0; pointer-events:none;
   background: radial-gradient(ellipse at 100% 100%, rgba(200,155,60,0.08) 0%, transparent 50%);
 }
-.kh-layout { display:grid; grid-template-columns:1.3fr 1fr; gap: clamp(1.5rem,4vw,4.5rem); align-items:center; }
+.kh-layout { display:grid; grid-template-columns:1fr 1fr; gap: clamp(1.5rem,4vw,4.5rem); align-items:start; }
 .kh-left h2 { font-family:"Bebas Neue",sans-serif; font-size: clamp(1.4rem,3.5vw,2.6rem); letter-spacing:2px; margin-bottom: clamp(0.4rem,1.2vh,1rem); }
 .kh-left p   { font-size: clamp(0.82rem,1.6vw,1.1rem); color:var(--grey-light); line-height:1.7; margin-bottom: clamp(0.6rem,1.5vh,1.2rem); }
-.kh-stat-row { display:flex; flex-direction:column; gap:0.6rem; align-items:center; }
+.kh-stat-row { display:flex; gap: clamp(0.6rem,1.5vw,1.5rem); flex-wrap:wrap; justify-content:center; }
 .kh-stat-card {
   background:rgba(200,155,60,0.1); border:1px solid rgba(200,155,60,0.3);
   border-radius:8px; padding: clamp(0.6rem,1.3vh,1rem) clamp(0.8rem,1.5vw,1.3rem);
-  text-align:center; min-width:70px; width:100%; max-width:320px; transition: all 0.3s;
+  text-align:center; min-width:70px; transition: all 0.3s; flex:1;
 }
 .kh-stat-card:hover { background:rgba(200,155,60,0.2); transform:translateY(-2px); }
 .kh-stat-num   { font-family:"Bebas Neue",sans-serif; font-size: clamp(1.6rem,3vw,2.6rem); color:var(--gold-light); line-height:1; }
@@ -990,12 +990,14 @@ body {
   .visual-card-body  { font-size:0.73rem; }
 
   /* KH */
-  .kh-layout { grid-template-columns:1fr; gap:0.9rem; }
+  .kh-layout { grid-template-columns:1fr !important; gap:0.9rem; }
   .kh-left h2 { font-size:1.1rem; }
   .kh-left p  { font-size:0.78rem; }
-  .kh-stat-row { gap:0.45rem; }
+  .kh-stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:0.45rem; }
+  .kh-stat-card { flex:none; width:100%; }
   .kh-stat-num { font-size:1.4rem; }
   .kh-stat-label { font-size:0.68rem; }
+  .kh-cards { display:grid; grid-template-columns:repeat(2,1fr); gap:0.5rem; }
   .kh-card { padding:0.65rem 0.8rem; gap:7px; }
   .kh-card-icon  { font-size:0.95rem; }
   .kh-card-title { font-size:0.82rem; }
