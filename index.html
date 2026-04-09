@@ -723,6 +723,16 @@ body {
 .kh-card-icon  { font-size: clamp(1.1rem,2vw,1.6rem); flex-shrink:0; margin-top:2px; }
 .kh-card-title { font-size: clamp(0.88rem,1.7vw,1.1rem); font-weight:600; color:var(--white); margin-bottom:2px; }
 .kh-card-desc  { font-size: clamp(0.76rem,1.4vw,1rem); color:var(--grey); line-height:1.5; }
+.kh-stat-drawer, .kh-drawer { max-height:0; overflow:hidden; opacity:0; transition:all 0.3s; }
+.kh-stat-card.expanded .kh-stat-drawer,
+.kh-card.expanded .kh-drawer { max-height:300px; opacity:1; }
+.kh-stat-drawer { display:flex; justify-content:center; margin-top:0.5rem; }
+.kh-stat-drawer .thumb-item { flex:none; }
+.kh-stat-drawer img { width:100px; height:70px; object-fit:cover; border-radius:6px; cursor:pointer; }
+.kh-drawer { display:flex; justify-content:center; margin-top:0.6rem; }
+.kh-drawer .thumb-item { flex:none; }
+.kh-drawer img { width:160px; height:100px; object-fit:cover; border-radius:6px; cursor:pointer; transition:transform 0.2s; }
+.kh-drawer img:hover { transform:scale(1.04); }
 
 /* ==============================
    SLIDE 7 — SKILLS
@@ -1955,16 +1965,16 @@ body {
         <h2 class="reveal d1">🥫 <span style="color:var(--red)">KRAFT HEINZ</span><br>卡夫亨氏管培生经历</h2>
         <p class="reveal d2">作为2024届校招生，经历零售渠道、餐饮渠道、GTM销售运营三个核心部门轮岗，掌握外资快消核心运作逻辑。</p>
         <div class="kh-stat-row reveal d3">
-          <div class="kh-stat-card"><div class="kh-stat-num">3</div><div class="kh-stat-label">渠道轮岗</div></div>
-          <div class="kh-stat-card"><div class="kh-stat-num">CGO</div><div class="kh-stat-label">汇报对象</div></div>
-          <div class="kh-stat-card"><div class="kh-stat-num">3+</div><div class="kh-stat-label">战略项目</div></div>
+          <div class="kh-stat-card" data-expandable><div class="kh-stat-num">3</div><div class="kh-stat-label">渠道轮岗</div><div class="kh-stat-drawer"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/卡夫亨氏/渠道轮岗.jpg" alt="渠道轮岗"></div></div></div>
+          <div class="kh-stat-card" data-expandable><div class="kh-stat-num">CGO</div><div class="kh-stat-label">汇报对象</div><div class="kh-stat-drawer"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/卡夫亨氏/向CGO汇报.jpg" alt="向CGO汇报"></div></div></div>
+          <div class="kh-stat-card" data-expandable><div class="kh-stat-num">3+</div><div class="kh-stat-label">战略项目</div><div class="kh-stat-drawer"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/卡夫亨氏/战略项目.jpg" alt="战略项目"></div></div></div>
         </div>
       </div>
       <div class="kh-cards">
-        <div class="kh-card reveal d2"><div class="kh-card-icon">🏨</div><div><div class="kh-card-title">亨氏高端酒店项目 · 从0到1</div><div class="kh-card-desc">市场调研→线索搜集→客户拜访→提案，成功与广州中国大酒店、希尔顿等建立合作</div></div></div>
-        <div class="kh-card reveal d3"><div class="kh-card-icon">📊</div><div><div class="kh-card-title">FLP文娱行业战略咨询项目 · 项目经理</div><div class="kh-card-desc">领导团队完成深度行业调研，输出亨氏文娱行业战略机会点，获中国高管团队一致认可</div></div></div>
-        <div class="kh-card reveal d4"><div class="kh-card-icon">🗺️</div><div><div class="kh-card-title">Perfect Store · GTM渠道筛选与布局</div><div class="kh-card-desc">承接总部GTM项目，参与华南区渠道筛选，打造完美门店体验，确保品牌形象统一</div></div></div>
-        <div class="kh-card reveal d5"><div class="kh-card-icon">🎓</div><div><div class="kh-card-title">跨部门内训 · 知识体系建设</div><div class="kh-card-desc">担任MECE方法论内训讲师，运用Tableau搭建区域门店执行监控数据看板</div></div></div>
+        <div class="kh-card reveal d2" data-expandable><div class="kh-card-icon">🏨</div><div><div class="kh-card-title">亨氏高端酒店项目 · 从0到1</div><div class="kh-card-desc">市场调研→线索搜集→客户拜访→提案，成功与广州中国大酒店、希尔顿等建立合作</div><div class="kh-drawer"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/卡夫亨氏/亨氏高端酒店项目.jpg" alt="亨氏高端酒店项目"></div></div></div></div>
+        <div class="kh-card reveal d3" data-expandable><div class="kh-card-icon">📊</div><div><div class="kh-card-title">FLP文娱行业战略咨询项目 · 项目经理</div><div class="kh-card-desc">领导团队完成深度行业调研，输出亨氏文娱行业战略机会点，获中国高管团队一致认可</div><div class="kh-drawer"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/卡夫亨氏/FLP战略咨询项目.jpg" alt="FLP战略咨询项目"></div></div></div></div>
+        <div class="kh-card reveal d4" data-expandable><div class="kh-card-icon">🗺️</div><div><div class="kh-card-title">Perfect Store · GTM渠道筛选与布局</div><div class="kh-card-desc">承接总部GTM项目，参与华南区渠道筛选，打造完美门店体验，确保品牌形象统一</div><div class="kh-drawer"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/卡夫亨氏/PerfectStore.jpg" alt="Perfect Store"></div></div></div></div>
+        <div class="kh-card reveal d5" data-expandable><div class="kh-card-icon">🎓</div><div><div class="kh-card-title">跨部门内训 · 知识体系建设</div><div class="kh-card-desc">担任MECE方法论内训讲师，运用Tableau搭建区域门店执行监控数据看板</div><div class="kh-drawer"><div class="thumb-item" onclick="openLightbox(this)"><img src="图片参考/卡夫亨氏/跨部门内训.jpg" alt="跨部门内训"></div></div></div></div>
       </div>
     </div>
   </div>
@@ -2082,7 +2092,7 @@ slides.forEach(s => observer.observe(s));
 document.querySelectorAll('[data-expandable]').forEach(card => {
   card.addEventListener('click', function(e) {
     // Don't collapse if clicking inside detail
-    if (!e.target.closest('.thumb-item') && !e.target.closest('.case-timeline-drawer') && !e.target.closest('.bridge-drawer')) {
+    if (!e.target.closest('.thumb-item') && !e.target.closest('.case-timeline-drawer') && !e.target.closest('.bridge-drawer') && !e.target.closest('.kh-drawer') && !e.target.closest('.kh-stat-drawer')) {
       this.classList.toggle('expanded');
     }
   });
