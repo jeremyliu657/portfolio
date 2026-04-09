@@ -704,11 +704,11 @@ body {
 .kh-layout { display:grid; grid-template-columns:1.3fr 1fr; gap: clamp(1.5rem,4vw,4.5rem); align-items:center; }
 .kh-left h2 { font-family:"Bebas Neue",sans-serif; font-size: clamp(1.4rem,3.5vw,2.6rem); letter-spacing:2px; margin-bottom: clamp(0.4rem,1.2vh,1rem); }
 .kh-left p   { font-size: clamp(0.82rem,1.6vw,1.1rem); color:var(--grey-light); line-height:1.7; margin-bottom: clamp(0.6rem,1.5vh,1.2rem); }
-.kh-stat-row { display:flex; gap: clamp(0.6rem,1.5vw,1.5rem); }
+.kh-stat-row { display:flex; flex-direction:column; gap:0.6rem; align-items:center; }
 .kh-stat-card {
   background:rgba(200,155,60,0.1); border:1px solid rgba(200,155,60,0.3);
   border-radius:8px; padding: clamp(0.6rem,1.3vh,1rem) clamp(0.8rem,1.5vw,1.3rem);
-  text-align:center; min-width:70px; transition: all 0.3s;
+  text-align:center; min-width:70px; width:100%; max-width:320px; transition: all 0.3s;
 }
 .kh-stat-card:hover { background:rgba(200,155,60,0.2); transform:translateY(-2px); }
 .kh-stat-num   { font-family:"Bebas Neue",sans-serif; font-size: clamp(1.6rem,3vw,2.6rem); color:var(--gold-light); line-height:1; }
