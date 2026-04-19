@@ -2422,12 +2422,14 @@ function openNodePanel(nodeId) {
   const thumbsEl = document.getElementById('panelThumbs');
   titleEl.textContent = data.title;
   subtitleEl.textContent = data.subtitle;
-  thumbsEl.innerHTML = data.images.map(img => `
+  thumbsEl.innerHTML = data.images.map(img => {
+    const displayAlt = currentLang === 'en' && img.alt_en ? img.alt_en : img.alt;
+    return `
     <div class="panel-thumb-item" onclick="openPanelLightbox(this)">
-      <img src="${img.src}" alt="${img.alt}">
-      <div class="panel-thumb-caption">${img.alt}</div>
+      <img src="${img.src}" alt="${displayAlt}">
+      <div class="panel-thumb-caption">${displayAlt}</div>
     </div>
-  `).join('');
+  `}).join('');
   panel.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
