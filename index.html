@@ -215,6 +215,25 @@ body {
 }
 .intro-label { color: var(--red); font-weight: 600; }
 
+.skill-row { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.skill-label { color: var(--red); font-weight: 600; font-size: clamp(0.85rem, 1.5vw, 1rem); min-width: 3.5rem; }
+.skill-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.skill-chip {
+  background: #C8102E;
+  border: 1px solid #C8102E;
+  color: var(--white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+.skill-chip:hover {
+  background: #e0123a;
+  border-color: #e0123a;
+  transform: translateY(-2px);
+}
+
 .hero-photo {
   width: clamp(180px,26vw,380px); height: clamp(180px,26vw,380px);
   border-radius: 50%; overflow: hidden;
@@ -1550,9 +1569,30 @@ body {
         <div class="hero-tagline reveal d4" data-i18n="hero-tagline">个人价值：沟通 · 链接 · 利他</div>
         <div class="hero-intro reveal d5">
           <p class="intro-greeting" data-i18n="hero-intro">Hi 👋 欢迎来到我的个人网站<br><span class="intro-break">你将全面了解我是谁</span></p>
-          <p class="intro-line" data-i18n="hero-trait-1"><span class="intro-label">我擅长：</span>需求洞察、大客户服务、数据分析</p>
-          <p class="intro-line" data-i18n="hero-trait-2"><span class="intro-label">我热衷：</span>创意营销、流行文化、IP 叙事</p>
-          <p class="intro-line" data-i18n="hero-trait-3"><span class="intro-label">我拥抱：</span>AI 创新工具、利他主义、持续进化</p>
+          <div class="skill-row">
+            <span class="skill-label" data-i18n="skill-label-1">我擅长</span>
+            <div class="skill-chips">
+              <span class="skill-chip" data-i18n="skill-1-1">需求洞察</span>
+              <span class="skill-chip" data-i18n="skill-1-2">大客户服务</span>
+              <span class="skill-chip" data-i18n="skill-1-3">数据分析</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-label" data-i18n="skill-label-2">我热衷</span>
+            <div class="skill-chips">
+              <span class="skill-chip" data-i18n="skill-2-1">创意营销</span>
+              <span class="skill-chip" data-i18n="skill-2-2">流行文化</span>
+              <span class="skill-chip" data-i18n="skill-2-3">IP 叙事</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <span class="skill-label" data-i18n="skill-label-3">我拥抱</span>
+            <div class="skill-chips">
+              <span class="skill-chip" data-i18n="skill-3-1">AI 创新工具</span>
+              <span class="skill-chip" data-i18n="skill-3-2">利他主义</span>
+              <span class="skill-chip" data-i18n="skill-3-3">持续进化</span>
+            </div>
+          </div>
         </div>
         <div class="hero-buttons">
           <div class="hero-wechat" onclick="openWechatModal()">
@@ -2883,9 +2923,20 @@ var I18N = {
   'hero-subtitle': { zh: "职业经历 — TCG 游戏 · FMCG 快消 · 跨行业操盘手", en: "Experience: Gaming · FMCG · Cross-Industry Transformation" },
   'hero-tagline': { zh: "个人价值：沟通 · 链接 · 利他", en: "Values: Communicate · Connect · Serve Others" },
   'hero-intro': { zh: "欢迎来到我的个人网站，你将全面了解我是谁", en: "Welcome to my portfolio — feel free to unplug me inside out" },
-  'hero-trait-1': { zh: "<span class=\"intro-label\">我擅长：</span>需求洞察、大客户服务、数据分析", en: "<span class=\"intro-label\">I excel at:</span> Deciphering customer insights, Account management, Data-driven strategy." },
-  'hero-trait-2': { zh: '<span class="intro-label">我热衷：</span>创意营销、流行文化、IP 叙事', en: '<span class="intro-label">I\'m passionate about:</span> Creative marketing, Pop culture trends, IP storytelling.' },
-  'hero-trait-3': { zh: "<span class=\"intro-label\">我拥抱：</span>AI 创新工具、利他主义、持续进化", en: "<span class=\"intro-label\">I embrace:</span> AI-driven innovation, altruistic leadership, and lifelong evolution." },
+
+  // Skill chips
+  'skill-label-1': { zh: "我擅长", en: "I excel at" },
+  'skill-label-2': { zh: "我热衷", en: "I'm passionate about" },
+  'skill-label-3': { zh: "我拥抱", en: "I embrace" },
+  'skill-1-1': { zh: "需求洞察", en: "Customer insights" },
+  'skill-1-2': { zh: "大客户服务", en: "Account management" },
+  'skill-1-3': { zh: "数据分析", en: "Data analytics" },
+  'skill-2-1': { zh: "创意营销", en: "Creative marketing" },
+  'skill-2-2': { zh: "流行文化", en: "Pop culture" },
+  'skill-2-3': { zh: "IP 叙事", en: "IP storytelling" },
+  'skill-3-1': { zh: "AI 创新工具", en: "AI-driven tools" },
+  'skill-3-2': { zh: "利他主义", en: "Altruistic leadership" },
+  'skill-3-3': { zh: "持续进化", en: "Lifelong evolution" },
 
   // Slide 2: ABOUT
   'about-title': { zh: "🔗 连点成线，我的优势 WHO AM I", en: "🔗 <span style=\"color:var(--red)\">Connecting the Dots</span> — My Strengths" },
