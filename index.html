@@ -2436,10 +2436,10 @@ function openNodePanel(nodeId) {
   const subtitleEl = document.getElementById('panelSubtitle');
   const thumbsEl = document.getElementById('panelThumbs');
   const logoMap = {
-    node1: '图片参考/logo-口译/interpreter.svg',
-    node2: '图片参考/logo-公益咨询/ABC.jpg',
-    node3: '图片参考/logo-卡夫亨氏/khlogo.png',
-    node4: '图片参考/logo-游戏IP/yaopop.png'
+    node1: '图片参考/logo-interpreter/interpreter.svg',
+    node2: '图片参考/logo-abc/ABC.jpg',
+    node3: '图片参考/logo-kraft/khlogo.png',
+    node4: '图片参考/logo-yaopop/yaopop.png'
   };
   const logoPath = logoMap[nodeId];
   logoEl.innerHTML = logoPath ? `<img src="${logoPath}" alt="logo">` : '';
