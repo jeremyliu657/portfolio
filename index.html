@@ -2817,17 +2817,32 @@ function openMetricLightbox(img) {
 </div>
 
 <script>
-window.addEventListener('DOMContentLoaded', () => {
-  const intro = document.getElementById('contactIntro');
+// ===== CHAR ANIMATION WITH I18N =====
+var charAnimText = { zh: 'Hi 我是刘云江，很荣幸向你展示，让我们保持链接🤝！', en: "Hi I'm Jeremy Liu, honored to be here — let's stay connected! 🤝" };
+
+function runCharAnimation() {
+  var intro = document.getElementById('contactIntro');
   if (!intro) return;
-  const text = 'Hi 我是刘云江，很荣幸向你展示，让我们保持链接🤝！';
+  var text = charAnimText[currentLang] || charAnimText.zh;
   intro.innerHTML = '';
-  [...text].forEach((char, i) => {
-    const span = document.createElement('span');
+  var _arr = Array.from(text);
+  _arr.forEach(function(char, i) {
+    var span = document.createElement('span');
     span.textContent = char === ' ' ? '\u00A0' : char;
     span.className = 'char-animate';
     span.style.animationDelay = (i * 0.04) + 's';
     intro.appendChild(span);
+  });
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  runCharAnimation();
+  
+  // Re-run when language changes
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setTimeout(runCharAnimation, 50);
+    });
   });
 });
 </script>
