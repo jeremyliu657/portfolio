@@ -2074,15 +2074,15 @@ body {
       <div class="contact-info reveal d5" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
         <div class="hero-wechat" onclick="openWechatModal()">
           <span style="font-size:1.4rem">💬</span>
-          <span>加我微信</span>
+          <span data-i18n="btn-wechat">加我微信</span>
         </div>
         <div class="hero-wechat" onclick="openResumeModal()">
           <span style="font-size:1.4rem">📄</span>
-          <span>获取简历</span>
+          <span data-i18n="btn-resume">获取简历</span>
         </div>
         <div class="hero-wechat" onclick="openLinkedinModal()">
           <span style="font-size:1.4rem">💼</span>
-          <span>领英联系</span>
+          <span data-i18n="btn-linkedin">领英联系</span>
         </div>
       </div>
       <div class="contact-detail reveal d5">
@@ -2771,17 +2771,17 @@ function openMetricLightbox(img) {
   <div class="wechat-modal-overlay" onclick="closeWechatModal()"></div>
   <div class="wechat-modal-card">
     <button class="wechat-modal-close" onclick="closeWechatModal()">×</button>
-    <div class="wechat-modal-header">你好👋，欢迎扫码添加我的微信</div>
+    <div class="wechat-modal-header" data-i18n="wechat-header">你好👋，欢迎扫码添加我的微信</div>
     <div class="wechat-modal-qr">
       <img src="图片参考/二维码和链接/微信二维码.JPG" alt="微信二维码" data-i18n-alt="img-52" id="wechatQrImg">
     </div>
     <div class="wechat-modal-info">
       <div class="wechat-modal-id">
-        <span class="wechat-id-label">微信号</span>
+        <span class="wechat-id-label" data-i18n="wechat-id-label">微信号</span>
         <span class="wechat-id-value" id="wechatId">laootiantian</span>
-        <button class="wechat-copy-btn" onclick="copyWechatId()">复制</button>
+        <button class="wechat-copy-btn" onclick="copyWechatId()" data-i18n="wechat-copy">复制</button>
       </div>
-      <div class="wechat-modal-tips">长按二维码识别，或复制微信号添加</div>
+      <div class="wechat-modal-tips" data-i18n="wechat-tips">长按二维码识别，或复制微信号添加</div>
     </div>
   </div>
 </div>
@@ -2791,7 +2791,7 @@ function openMetricLightbox(img) {
   <div class="wechat-modal-overlay" onclick="closeLinkedinModal()"></div>
   <div class="wechat-modal-card">
     <button class="wechat-modal-close" onclick="closeLinkedinModal()">×</button>
-    <div class="wechat-modal-header">Hi👋, Nice Connecting with you here at Linkedin</div>
+    <div class="wechat-modal-header" data-i18n="linkedin-header">Hi👋, Nice Connecting with you here at Linkedin</div>
     <div class="wechat-modal-qr">
       <img src="图片参考/二维码和链接/领英.JPG" alt="领英二维码" data-i18n-alt="img-53" id="linkedinQrImg">
     </div>
@@ -2806,12 +2806,12 @@ function openMetricLightbox(img) {
   <div class="wechat-modal-overlay" onclick="closeResumeModal()"></div>
   <div class="wechat-modal-card" style="max-width:700px">
     <button class="wechat-modal-close" onclick="closeResumeModal()">×</button>
-    <div class="wechat-modal-header">📄 中英文简历-Resume</div>
+    <div class="wechat-modal-header" data-i18n="resume-header">📄 中英文简历-Resume</div>
     <div class="resume-modal-preview">
       <object data="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" type="application/pdf" width="100%" style="height:75vh"></object>
     </div>
     <div class="resume-modal-footer">
-      <a href="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" download="刘云江_简历.pdf" class="resume-download-btn">⬇ 下载简历</a>
+      <a href="图片参考/二维码和链接/刘云江_中英文简历_Resume%20.pdf" download="刘云江_简历.pdf" class="resume-download-btn" data-i18n="resume-download">⬇ 下载简历</a>
     </div>
   </div>
 </div>
@@ -2905,6 +2905,15 @@ var I18N = {
   'btn-wechat': { zh: '加我微信', en: 'WeChat' },
   'btn-resume': { zh: '获取简历', en: 'Get Resume' },
   'btn-linkedin': { zh: '领英联系', en: 'LinkedIn' },
+
+  // Modal translations
+  'wechat-header': { zh: '你好👋，欢迎扫码添加我的微信', en: 'Hi👋, feel free to add me on WeChat' },
+  'wechat-id-label': { zh: '微信号', en: 'WeChat ID' },
+  'wechat-copy': { zh: '复制', en: 'Copy' },
+  'wechat-tips': { zh: '长按二维码识别，或复制微信号添加', en: 'Long press the QR code or copy the ID to add me' },
+  'linkedin-header': { zh: 'Hi👋, Nice Connecting with you here at Linkedin', en: 'Hi👋, Nice Connecting with you here on LinkedIn' },
+  'resume-header': { zh: '📄 中英文简历-Resume', en: '📄 Resume (EN & CN)' },
+  'resume-download': { zh: '⬇ 下载简历', en: '⬇ Download Resume' },
   'timeline-title': { zh: 'CAREER JOURNEY · 职业旅程', en: 'CAREER JOURNEY' },
   'timeline-role-1': { zh: '金属材料工程', en: 'Metallic Materials Engineering' },
   'timeline-role-2': { zh: '口译90余场', en: '90+ Interpretation Sessions' },
