@@ -1274,6 +1274,19 @@ body {
   color: var(--grey-light);
   margin-top: -0.3rem;
 }
+.panel-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.panel-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 .panel-thumbs {
   display: grid;
   grid-template-columns: 1fr;
@@ -1785,6 +1798,7 @@ body {
   <div class="panel-overlay" onclick="closeNodePanel()"></div>
   <div class="panel-content">
     <button class="panel-close" onclick="closeNodePanel()">×</button>
+    <div class="panel-logo" id="panelLogo"></div>
     <div class="panel-title" id="panelTitle"></div>
     <div class="panel-subtitle" id="panelSubtitle"></div>
     <div class="panel-thumbs" id="panelThumbs"></div>
@@ -2417,9 +2431,18 @@ function openNodePanel(nodeId) {
   const data = panelData[nodeId];
   if (!data) return;
   const panel = document.getElementById('nodePanel');
+  const logoEl = document.getElementById('panelLogo');
   const titleEl = document.getElementById('panelTitle');
   const subtitleEl = document.getElementById('panelSubtitle');
   const thumbsEl = document.getElementById('panelThumbs');
+  const logoMap = {
+    node1: '图片参考/logo-口译/interpreter.svg',
+    node2: '图片参考/logo-公益咨询/ABC.jpg',
+    node3: '图片参考/logo-卡夫亨氏/khlogo.png',
+    node4: '图片参考/logo-游戏IP/yaopop.png'
+  };
+  const logoPath = logoMap[nodeId];
+  logoEl.innerHTML = logoPath ? `<img src="${logoPath}" alt="logo">` : '';
   titleEl.textContent = data.title;
   subtitleEl.textContent = data.subtitle;
   thumbsEl.innerHTML = data.images.map(img => {
