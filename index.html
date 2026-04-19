@@ -1531,7 +1531,7 @@ body {
   <div class="slide-content">
     <div class="hero-layout">
       <div class="hero-content">
-        <div class="hero-eyebrow reveal d1">Personal Portfolio · 个人作品集</div>
+        <div class="hero-eyebrow reveal d1" data-i18n="hero-eyebrow">Personal Portfolio · 个人作品集</div>
         <h1 class="hero-name reveal d2" data-i18n="hero-greeting">你好，我是<br><span>刘云江</span> Jeremy Liu</h1>
         <div class="hero-sub reveal d3" data-i18n="hero-subtitle">职业经历 — TCG 游戏 · FMCG 快消 · 跨行业操盘手</div>
         <div class="hero-tagline reveal d4" data-i18n="hero-tagline">个人价值：沟通 · 链接 · 利他</div>
@@ -1544,15 +1544,15 @@ body {
         <div class="hero-buttons">
           <div class="hero-wechat" onclick="openWechatModal()">
             <span style="font-size:1.4rem">💬</span>
-            <span>加我微信</span>
+            <span data-i18n="btn-wechat">加我微信</span>
           </div>
           <div class="hero-wechat" onclick="openResumeModal()">
             <span style="font-size:1.4rem">📄</span>
-            <span>获取简历</span>
+            <span data-i18n="btn-resume">获取简历</span>
           </div>
           <div class="hero-wechat" onclick="openLinkedinModal()">
             <span style="font-size:1.4rem">💼</span>
-            <span>领英联系</span>
+            <span data-i18n="btn-linkedin">领英联系</span>
           </div>
         </div>
       </div>
@@ -1578,13 +1578,13 @@ body {
         <p class="reveal d2" data-i18n="about-desc">从材料工程师到口译员，从快消管培生到游戏IP渠道经理——我的职业路径横跨多个行业。每一次跨越都让我积累更强的跨界整合能力，并将消费者洞察、数据分析与创意营销融合于一体。</p>
         <p class="reveal d3" data-i18n="about-edu" style="margin-top:0.6em;font-size:var(--small-size);color:var(--grey)"><span style="color:#e63946">本科</span>金属材料工程 <span style="color:#e63946">硕士</span>英语口译翻译</p>
         <div class="reveal d4" style="margin-top:0.9rem;display:flex;flex-wrap:wrap;gap:0.5rem">
-          <span class="skill-tag-hero">销售管理</span>
-          <span class="skill-tag-hero">增长运营</span>
-          <span class="skill-tag-hero">营销策划</span>
-          <span class="skill-tag-hero">客户开发</span>
-          <span class="skill-tag-hero">AI Native</span>
-          <span class="skill-tag-hero">数据分析</span>
-          <span class="skill-tag-hero">IP 运营</span>
+          <span class="skill-tag-hero" data-i18n="skill-销售管">销售管理</span>
+          <span class="skill-tag-hero" data-i18n="skill-增长运">增长运营</span>
+          <span class="skill-tag-hero" data-i18n="skill-营销策">营销策划</span>
+          <span class="skill-tag-hero" data-i18n="skill-客户开">客户开发</span>
+          <span class="skill-tag-hero" data-i18n="skill-ai">AI Native</span>
+          <span class="skill-tag-hero" data-i18n="skill-数据分">数据分析</span>
+          <span class="skill-tag-hero" data-i18n="skill-ip">IP 运营</span>
         </div>
       </div>
       <div class="highlights-grid">
@@ -1595,7 +1595,7 @@ body {
           </div>
           <div class="highlight-desc"><strong>每次转型快速积累和迭代行业经验、岗位专长、企业文化，达到和超越岗位要求</strong></div>
           <div class="highlight-detail">
-                        <div class="detail-tags">
+                        <div class="detail-tags" data-i18n="timeline-role-3">
               <span>材料学（理工）</span><span>口译（人文）</span><span>咨询顾问</span><span>卡夫亨氏管培</span><span>姚记渠道经理</span>
             </div>
                         <div class="detail-thumbs">
@@ -1690,7 +1690,7 @@ body {
 <!-- ============ SLIDE 3: TIMELINE ============ -->
 <section class="slide" id="slide-3">
   <div class="slide-content">
-    <div class="journey-title reveal d1">🛤️ CAREER JOURNEY · 职业旅程</div>
+    <div class="journey-title reveal d1" data-i18n="timeline-title">🛤️ CAREER JOURNEY · 职业旅程</div>
 
     <!-- SVG nodes (desktop only) -->
     <div class="career-nodes-svg reveal d1" style="width:100%;max-width:800px;margin:0 auto 1.5rem;padding:0 1rem;position:relative">
@@ -2883,6 +2883,29 @@ var I18N = {
   // Slide 7: SKILLS
   'skills-title': { zh: "🎯 SKILLS & EXPERTISE · 技能专长", en: "🎯 SKILLS & EXPERTISE" },
   'contact-title': { zh: "Let's Connect · 期待合作", en: "Let's Connect" },
+
+  // Additional translations
+  'hero-eyebrow': { zh: 'Personal Portfolio · 个人作品集', en: 'Personal Portfolio · 个人作品集' },
+  'btn-wechat': { zh: '加我微信', en: 'WeChat' },
+  'btn-resume': { zh: '获取简历', en: 'Get Resume' },
+  'btn-linkedin': { zh: '领英联系', en: 'LinkedIn' },
+  'timeline-title': { zh: 'CAREER JOURNEY · 职业旅程', en: 'CAREER JOURNEY · 职业旅程' },
+  'timeline-role-1': { zh: '金属材料工程', en: 'Metallic Materials Engineering' },
+  'timeline-role-2': { zh: '口译90余场', en: '90+ Interpretation Sessions' },
+  'timeline-role-3': { zh: '咨询顾问', en: 'Consultant' },
+  'timeline-role-4': { zh: '卡夫亨氏', en: 'Kraft Heinz' },
+  'timeline-role-5': { zh: 'TCG渠道经理', en: 'TCG Channel Manager' },
+  'highlight-1-title': { zh: '跨行业快速学习', en: 'Fast Cross-Industry Learner' },
+  'highlight-2-title': { zh: '客户目标导向', en: 'Client-Focused Delivery' },
+  'highlight-3-title': { zh: '积极主人翁意识', en: 'Proactive Ownership' },
+  'skill-销售管': { zh: '销售管理', en: 'Sales Management' },
+  'skill-增长运': { zh: '增长运营', en: 'Growth Operations' },
+  'skill-营销策': { zh: '营销策划', en: 'Marketing Strategy' },
+  'skill-客户开': { zh: '客户开发', en: 'Business Development' },
+  'skill-ai': { zh: 'AI Native', en: 'AI Native' },
+  'skill-数据分': { zh: '数据分析', en: 'Data Analytics' },
+  'skill-ip': { zh: 'IP 运营', en: 'IP Operations' },
+
 };
 
 // ===== LANGUAGE TOGGLE LOGIC =====
@@ -2912,4 +2935,4 @@ document.querySelectorAll('.lang-btn').forEach(function(btn) {
 });
 </script>
 </body>
-</html>
+</html data-i18n="timeline-role-1" data-i18n="timeline-role-2" data-i18n="timeline-role-4" data-i18n="timeline-role-5">
