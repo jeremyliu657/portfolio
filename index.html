@@ -2903,12 +2903,11 @@ function setLanguage(lang) {
   document.documentElement.lang = lang;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  setLanguage(currentLang);
-  document.querySelectorAll('.lang-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      setLanguage(this.getAttribute('data-lang'));
-    });
+// Init immediately (script is at end of body, DOM is ready)
+setLanguage(currentLang);
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    setLanguage(this.getAttribute('data-lang'));
   });
 });
 </script>
