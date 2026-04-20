@@ -234,6 +234,8 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 0 15px rgba(200, 16, 46, 0.6), 0 0 30px rgba(200, 16, 46, 0.3);
 }
+.case-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0; }
+}
 
 .hero-photo {
   width: clamp(180px,26vw,380px); height: clamp(180px,26vw,380px);
@@ -1955,6 +1957,11 @@ body {
       <!-- Header -->
       <div class="project-badge reveal d1" data-i18n="lol-badge"><span>★</span> Featured Project · 代表项目</div>
       <h2 class="mbti-title reveal d2" data-i18n="project-title">🎮 英雄联盟TCG符文战场 小程序活动上线<br><span>"测试你的英雄人格"——流行文化+游戏文化 整合营销项目</span></h2>
+      <div class="case-tags reveal d3">
+        <span class="skill-chip" data-i18n="case-tag-community">社区运营与增长</span>
+        <span class="skill-chip" data-i18n="case-tag-event">活动营销</span>
+        <span class="skill-chip" data-i18n="case-tag-cocreation">客户管理及共创</span>
+      </div>
 
       <!-- Results -->
       <div class="mbti-results reveal d3">
@@ -3105,6 +3112,9 @@ var I18N = {
   'case-t4-tier': { zh: '🏆 T1 全国头部', en: '🏆 T1 National Top' },
   'case-t4-title': { zh: '标杆门店诞生', en: 'Benchmark Store Born' },
   'case-d-4': { zh: '在社区的支持下，酷猫卡牌成为全国T1头部门店。证明：社区运营增长比砸钱更有效。', en: 'With community support, Coolcat becomes a national T1 store. Proving: community growth beats big budgets.' },
+  'case-tag-community': { zh: '社区运营与增长', en: 'Community Operations & Growth' },
+  'case-tag-event': { zh: '活动营销', en: 'Event Marketing' },
+  'case-tag-cocreation': { zh: '客户管理及共创', en: 'Client Management & Co-creation' },
   'o2o-label': { zh: '🎯 O2O 整合营销路径', en: '🎯 O2O Integrated Marketing Path' },
   'o2o-core': { zh: '→ 核心主张："看透你的英雄池，读懂你的竞技人格"', en: '→ Core message: "Understand your champion pool, know your competitive personality"' },
   'o2o-h5': { zh: '→ H5互动测试：输入常用英雄 → 生成专属"英雄性格报告"', en: '→ H5 personality test: Enter your main champions → Generate exclusive hero personality report' },
