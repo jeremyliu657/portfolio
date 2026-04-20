@@ -2419,6 +2419,7 @@ document.addEventListener('keydown', e => {
 const panelData = {
   node1: {
     title: "口译经历",
+    title_en: "Interpretation Experience",
     subtitle: "2021 — 2024",
     images: [
       { src: "图片参考/节点1/硕士在读期间，我活跃在口译员市场上。我很幸运能遇见有很多愿意给我机会的老师们，实现做翻译的梦想，给各行各业的企业家、政府官员、社会组织提供口译服务。让我觉得更幸运的是.JPG", alt: "硕士在读期间，我活跃在口译员市场上。我很幸运能遇见有很多愿意给我机会的老师们，实现做翻译的梦想，给各行各业的企业家、政府官员、社会组织提供口译服务。让我觉得更幸运的是，在人生的初期能接触到比我资深太多的前辈们，他们的人生阅历和智慧让我受益匪浅", alt_en: "During my master's, I was active in the interpretation market. Lucky to meet teachers who gave me opportunities to fulfill my dream of translation — serving entrepreneurs, government officials, and organizations. Even luckier to connect with senior professionals whose wisdom deeply benefited me." },
@@ -2432,6 +2433,7 @@ const panelData = {
   },
   node2: {
     title: "公益咨询经历",
+    title_en: "Public Welfare Consulting",
     subtitle: "2023 — 2024",
     images: [
       { src: "图片参考/ABC/ABC-怀着对商业世界和公益活动的向往，我参加并通过了ABC美好社会咨询社23年成都的项目，锻炼了商业战略和数据分析、管理咨询方法论、问题解决和汇报演讲能力.jpg", alt: "怀着对商业世界和公益活动的向往，我参加并通过了ABC美好社会咨询社23年成都的项目，锻炼了商业战略和数据分析、管理咨询方法论、问题解决和汇报演讲能力", alt_en: "Drawn to business and public welfare, I joined ABC Social Consulting's 2023 Chengdu project — developing strategy, data analysis, consulting, problem-solving, and presentation skills" },
@@ -2442,6 +2444,7 @@ const panelData = {
   },
   node3: {
     title: "卡夫亨氏经历",
+    title_en: "Kraft Heinz Experience",
     subtitle: "2024 — 2025",
     images: [
       { src: "图片参考/节点3/2024年7月，我作为亨氏管培生，开启了职场生涯.jpg", alt: "2024年7月，我作为亨氏管培生，开启了职场生涯", alt_en: "July 2024 — as a Heinz trainee, starting my professional career" },
@@ -2455,6 +2458,7 @@ const panelData = {
   },
   node4: {
     title: "游戏IP运营经历",
+    title_en: "Gaming IP Operations",
     subtitle: "2025 — 2026",
     images: [
       { src: "图片参考/潮品/怀着对商业和IP行业的热情，我作为游戏渠道经理加入姚记，探索卡牌和IP的世界，用商业和消费的视角再度连接挚爱的童年IP，英雄联盟、宝可梦、迪士尼等.jpg", alt: "怀着对商业和IP行业的热情，我作为游戏渠道经理加入姚记，探索卡牌和IP的世界，用商业和消费的视角再度连接挚爱的童年IP，英雄联盟、宝可梦、迪士尼等", alt_en: "Joining Yaopop as gaming channel manager — exploring cards and IP with a business lens, reconnecting with childhood IPs like LoL, Pokemon, Disney" },
@@ -2487,7 +2491,7 @@ function openNodePanel(nodeId) {
   };
   const logoPath = logoMap[nodeId];
   logoEl.innerHTML = logoPath ? `<img src="${logoPath}" alt="logo">` : '';
-  titleEl.textContent = data.title;
+  titleEl.textContent = currentLang === 'en' && data.title_en ? data.title_en : data.title;
   subtitleEl.textContent = data.subtitle;
   thumbsEl.innerHTML = data.images.map(img => {
     const displayAlt = currentLang === 'en' && img.alt_en ? img.alt_en : img.alt;
