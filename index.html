@@ -854,6 +854,9 @@ body {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 .char-animate { display: inline-block; opacity: 0; animation: charBounce 0.5s ease forwards; }
+.char-animate.typewriter { opacity: 1; animation: none; }
+.typewriter-cursor { display: inline-block; width: 2px; height: 1em; background: var(--red); margin-left: 2px; vertical-align: text-bottom; animation: blink 0.8s infinite; }
+@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 
 .contact-link { color:var(--grey); text-decoration:none; transition:color 0.2s; cursor:pointer; }
 .contact-link:hover { color:var(--white); }
@@ -2901,10 +2904,14 @@ function runCharAnimation() {
   _arr.forEach(function(char, i) {
     var span = document.createElement('span');
     span.textContent = char === ' ' ? '\u00A0' : char;
-    span.className = 'char-animate';
-    span.style.animationDelay = (i * 0.04) + 's';
+    span.className = 'char-animate typewriter';
+    span.style.animationDelay = (i * 0.06) + 's';
     intro.appendChild(span);
   });
+  // Add cursor
+  var cursor = document.createElement('span');
+  cursor.className = 'typewriter-cursor';
+  intro.appendChild(cursor);
 }
 
 window.addEventListener('DOMContentLoaded', function() {
