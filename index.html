@@ -3016,24 +3016,45 @@ window.addEventListener('DOMContentLoaded', function() {
         const language = navigator.language || navigator.userLanguage || 'unknown';
         const timeOnPage = Math.round((Date.now() - performance.timing.navigationStart) / 1000);
 
+        const visitorData = {
+          message: message,
+          page: window.location.href,
+          ip: ip,
+          ua: ua,
+          referrer: referrer,
+          screen: screenRes,
+          language: language,
+          time_on_page: timeOnPage + 's'
+        };
+
+        // Send to Formspree (email notification)
         const formData = new FormData();
-        formData.append('message', message);
-        formData.append('page', window.location.href);
-        formData.append('ip', ip);
-        formData.append('ua', ua);
-        formData.append('referrer', referrer);
-        formData.append('screen', screenRes);
-        formData.append('language', language);
-        formData.append('time_on_page', timeOnPage + 's');
+        Object.keys(visitorData).forEach(key => {
+          formData.append(key, visitorData[key]);
+        });
         formData.append('_subject', 'New message from portfolio');
 
-        const response = await fetch('https://formspree.io/f/mgodekag', {
+        const formspreePromise = fetch('https://formspree.io/f/mgodekag', {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' }
         });
 
-        if (response.ok) {
+        // Send to Google Sheet (backup)
+        const googlePromise = fetch('https://script.google.com/macros/s/AKfycbzHArzX1bAY-wMAn6slP0-bVWmuXxdd2Zpp2g9ELkyizLcQlU6jIEqrHDKc1lZL4l0j/exec', {
+          method: 'POST',
+          body: JSON.stringify(visitorData),
+          headers: { 'Content-Type': 'application/json' },
+          mode: 'no-cors'
+        }).catch(() => {
+          // Google Sheet may fail due to CORS, but Formspree should work
+          return { ok: true };
+        });
+
+        // Wait for both (Google may fail silently)
+        const [formspreeRes] = await Promise.all([formspreePromise, googlePromise]);
+
+        if (formspreeRes.ok) {
           status.textContent = currentLang === 'en' ? '✓ Message sent!' : '✓ 留言已发送！';
           status.className = 'guestbook-status success';
           guestbookForm.reset();
