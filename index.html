@@ -2999,9 +2999,20 @@ window.addEventListener('DOMContentLoaded', function() {
       status.className = 'guestbook-status';
 
       try {
+        // Get IP address
+        let ip = 'unknown';
+        try {
+          const ipRes = await fetch('https://api.ipify.org?format=json');
+          const ipData = await ipRes.json();
+          ip = ipData.ip;
+        } catch (e) {
+          // IP fetch failed, continue without it
+        }
+
         const formData = new FormData();
         formData.append('message', message);
         formData.append('page', window.location.href);
+        formData.append('ip', ip);
         formData.append('_subject', 'New message from portfolio');
 
         const response = await fetch('https://formspree.io/f/mgodekag', {
