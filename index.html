@@ -861,6 +861,20 @@ body {
 .contact-link { color:var(--grey); text-decoration:none; transition:color 0.2s; cursor:pointer; }
 .contact-link:hover { color:var(--white); }
 .contact-link.copied { color:var(--green); }
+
+/* Guestbook */
+.guestbook-section { margin-top: 1.5rem; padding: 1rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 500px; }
+.guestbook-title { font-size: 0.9rem; color: var(--gold); font-weight: 600; margin-bottom: 0.8rem; text-align: center; }
+.guestbook-form { display: flex; flex-direction: column; gap: 0.6rem; }
+.guestbook-textarea { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.8rem; color: var(--white); font-size: 0.85rem; transition: border-color 0.2s; width: 100%; }
+.guestbook-textarea:focus { outline: none; border-color: var(--red); }
+.guestbook-textarea { min-height: 100px; resize: vertical; }
+.guestbook-btn { background: var(--red); color: white; border: none; border-radius: 8px; padding: 0.7rem 1.5rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.guestbook-btn:hover { background: var(--red-bright); transform: translateY(-1px); }
+.guestbook-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.guestbook-status { margin-top: 0.6rem; font-size: 0.8rem; text-align: center; min-height: 1.2rem; }
+.guestbook-status.success { color: var(--green); }
+.guestbook-status.error { color: var(--red); }
 .contact-sep { color:var(--border); }
 .bottom-logo { position:absolute; bottom: clamp(14px,2.5vh,28px); right: clamp(1.2rem,4vw,4.5rem); font-family:"Bebas Neue",sans-serif; font-size: clamp(0.72rem,1.3vw,1rem); color:rgba(255,255,255,0.12); letter-spacing:3px; }
 
@@ -1055,6 +1069,9 @@ body {
   .metrics-grid { grid-template-columns:1fr!important; }
   .skills-layout { grid-template-columns:1fr!important; }
   .hero-name { font-size:clamp(1.4rem,9vw,2rem)!important; }
+  .guestbook-section { padding:0.8rem!important; margin-top:1rem!important; }
+  .guestbook-textarea { font-size:0.8rem!important; padding:0.5rem!important; min-height:80px!important; }
+  .guestbook-btn { padding:0.6rem!important; font-size:0.8rem!important; }
 }
 
 /* ==============================
@@ -2157,6 +2174,16 @@ body {
         <span class="contact-sep">|</span>
         <a href="https://linkedin.com/in/jeremy00l" target="_blank" class="contact-link"><span>👔</span> LinkedIn</a>
       </div>
+
+      <!-- Guestbook Form -->
+      <div class="guestbook-section reveal d3">
+        <div class="guestbook-title" data-i18n="guestbook-title">💬 给我留言</div>
+        <form id="guestbookForm" class="guestbook-form">
+          <textarea id="guestMessage" class="guestbook-textarea" placeholder="写下你想说的话..." required data-i18n-placeholder="guest-message"></textarea>
+          <button type="submit" class="guestbook-btn" data-i18n="guestbook-submit">发送留言</button>
+        </form>
+        <div id="guestbookStatus" class="guestbook-status"></div>
+      </div>
     </div>
   </div>
   <div class="bottom-logo">JEREMY LIU · PORTFOLIO 2026</div>
@@ -2921,13 +2948,56 @@ function runCharAnimation() {
 
 window.addEventListener('DOMContentLoaded', function() {
   runCharAnimation();
-  
+
   // Re-run when language changes
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       setTimeout(runCharAnimation, 50);
     });
   });
+
+  // Guestbook Form Submit
+  const guestbookForm = document.getElementById('guestbookForm');
+  if (guestbookForm) {
+    guestbookForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = guestbookForm.querySelector('.guestbook-btn');
+      const status = document.getElementById('guestbookStatus');
+      const message = document.getElementById('guestMessage').value.trim();
+
+      if (!message) return;
+
+      btn.disabled = true;
+      btn.textContent = currentLang === 'en' ? 'Sending...' : '发送中...';
+      status.textContent = '';
+      status.className = 'guestbook-status';
+
+      try {
+        const response = await fetch('https://portfolio-guestbook.boggyer666.workers.dev', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: message,
+            page: window.location.pathname
+          })
+        });
+
+        if (response.ok) {
+          status.textContent = currentLang === 'en' ? '✓ Message sent!' : '✓ 留言已发送！';
+          status.className = 'guestbook-status success';
+          guestbookForm.reset();
+        } else {
+          throw new Error('Failed');
+        }
+      } catch (err) {
+        status.textContent = currentLang === 'en' ? '✗ Failed, please try again' : '✗ 发送失败，请重试';
+        status.className = 'guestbook-status error';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = currentLang === 'en' ? 'Send Message' : '发送留言';
+      }
+    });
+  }
 });
 </script>
 <!-- Cloudflare Web Analytics -->
@@ -3164,6 +3234,11 @@ var I18N = {
 
   // Contact
   'contact-tagline': { zh: '沟通 · 链接 · 利他', en: 'Communicate · Connect · Create Impact' },
+
+  // Guestbook
+  'guestbook-title': { zh: '💬 给我留言', en: '💬 Leave a Message' },
+  'guest-message': { zh: '写下你想说的话...', en: 'Write your message...' },
+  'guestbook-submit': { zh: '发送留言', en: 'Send Message' },
   // Skill groups
   'sg-1': { zh: '数据分析', en: 'Data Analytics' },
   'sg-2': { zh: '客户开发 BD', en: 'Business Development' },
