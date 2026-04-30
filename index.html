@@ -1391,6 +1391,15 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
 }
+.hero-wechat.guestbook-toggle {
+  background: rgba(139, 0, 0, 0.25);
+  border-color: rgba(139, 0, 0, 0.6);
+}
+.hero-wechat.guestbook-toggle:hover {
+  background: rgba(139, 0, 0, 0.4);
+  border-color: rgba(139, 0, 0, 0.8);
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.35);
+}
 .hero-wechat svg {
   flex-shrink: 0;
 }
@@ -2167,8 +2176,8 @@ body {
           <span style="font-size:1.4rem">💼</span>
           <span data-i18n="btn-linkedin">领英联系</span>
         </div>
-        <div class="hero-wechat" onclick="toggleGuestbook(event)">
-          <span style="font-size:1.4rem">💬</span>
+        <div class="hero-wechat guestbook-toggle" onclick="toggleGuestbook(event)">
+          <span style="font-size:1.4rem">🎤</span>
           <span data-i18n="guestbook-btn">给我留言</span>
         </div>
       </div>
