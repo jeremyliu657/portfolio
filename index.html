@@ -3009,10 +3009,22 @@ window.addEventListener('DOMContentLoaded', function() {
           // IP fetch failed, continue without it
         }
 
+        // Get visitor info
+        const ua = navigator.userAgent || 'unknown';
+        const referrer = document.referrer || 'Direct';
+        const screenRes = window.screen.width + 'x' + window.screen.height;
+        const language = navigator.language || navigator.userLanguage || 'unknown';
+        const timeOnPage = Math.round((Date.now() - performance.timing.navigationStart) / 1000);
+
         const formData = new FormData();
         formData.append('message', message);
         formData.append('page', window.location.href);
         formData.append('ip', ip);
+        formData.append('ua', ua);
+        formData.append('referrer', referrer);
+        formData.append('screen', screenRes);
+        formData.append('language', language);
+        formData.append('time_on_page', timeOnPage + 's');
         formData.append('_subject', 'New message from portfolio');
 
         const response = await fetch('https://formspree.io/f/mgodekag', {
