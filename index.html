@@ -863,7 +863,8 @@ body {
 .contact-link.copied { color:var(--green); }
 
 /* Guestbook */
-.guestbook-section { margin-top: 1.5rem; padding: 1rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 500px; }
+.guestbook-section { margin-top: 1rem; padding: 1rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 500px; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 .guestbook-title { font-size: 0.9rem; color: var(--gold); font-weight: 600; margin-bottom: 0.8rem; text-align: center; }
 .guestbook-form { display: flex; flex-direction: column; gap: 0.6rem; }
 .guestbook-textarea { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.8rem; color: var(--white); font-size: 0.85rem; transition: border-color 0.2s; width: 100%; }
@@ -2173,10 +2174,12 @@ body {
         <a href="mailto:jeremyliu657@gmail.com" class="contact-link" onclick="copyToClipboard('jeremyliu657@gmail.com', this)"><span>✉️</span> jeremyliu657@gmail.com</a>
         <span class="contact-sep">|</span>
         <a href="https://linkedin.com/in/jeremy00l" target="_blank" class="contact-link"><span>👔</span> LinkedIn</a>
+        <span class="contact-sep">|</span>
+        <a href="#" class="contact-link" onclick="toggleGuestbook(event)"><span>💬</span> <span data-i18n="guestbook-btn">给我留言</span></a>
       </div>
 
-      <!-- Guestbook Form -->
-      <div class="guestbook-section reveal d3">
+      <!-- Guestbook Form (hidden by default) -->
+      <div id="guestbookSection" class="guestbook-section" style="display:none;">
         <div class="guestbook-title" data-i18n="guestbook-title">💬 给我留言</div>
         <form id="guestbookForm" class="guestbook-form">
           <textarea id="guestMessage" class="guestbook-textarea" placeholder="写下你想说的话..." required data-i18n-placeholder="guest-message"></textarea>
@@ -2956,6 +2959,18 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Guestbook toggle function
+  window.toggleGuestbook = function(e) {
+    e.preventDefault();
+    const section = document.getElementById('guestbookSection');
+    if (section.style.display === 'none') {
+      section.style.display = 'block';
+      section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+      section.style.display = 'none';
+    }
+  };
+
   // Guestbook Form Submit
   const guestbookForm = document.getElementById('guestbookForm');
   if (guestbookForm) {
@@ -3236,6 +3251,7 @@ var I18N = {
   'contact-tagline': { zh: '沟通 · 链接 · 利他', en: 'Communicate · Connect · Create Impact' },
 
   // Guestbook
+  'guestbook-btn': { zh: '给我留言', en: 'Leave a Message' },
   'guestbook-title': { zh: '💬 给我留言', en: '💬 Leave a Message' },
   'guest-message': { zh: '写下你想说的话...', en: 'Write your message...' },
   'guestbook-submit': { zh: '发送留言', en: 'Send Message' },
