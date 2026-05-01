@@ -198,12 +198,12 @@ body {
 .hero-intro .intro-greeting {
   font-size: clamp(1.1rem,2.5vw,1.6rem); font-weight: 600;
   color: var(--white); margin: 0 0 0.6rem; letter-spacing: 1px;
-  -webkit-text-stroke: 0px var(--red);
-  animation: textStroke 3s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(200,16,46,0);
+  animation: textGlow 3s ease-in-out infinite;
 }
-@keyframes textStroke {
-  0%, 100% { -webkit-text-stroke: 0px var(--red); color: var(--white); }
-  50% { -webkit-text-stroke: 1.5px var(--red); color: rgba(200,16,46,0.15); }
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 8px rgba(200,16,46,0); color: var(--white); }
+  50% { text-shadow: 0 0 20px rgba(200,16,46,0.6), 0 0 40px rgba(200,16,46,0.3); color: rgba(255,255,255,0.95); }
 }
 .intro-break { display:inline; text-indent: 3em; }
 .intro-line {
