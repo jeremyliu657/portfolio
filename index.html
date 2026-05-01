@@ -865,6 +865,87 @@ body {
 /* Guestbook */
 .guestbook-section { margin-top: 1rem; padding: 1rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 12px; max-width: 500px; animation: fadeIn 0.3s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== FLOATING GUESTBOOK BUTTON ===== */
+.floating-guestbook {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.floating-guestbook:hover {
+  transform: scale(1.1);
+}
+.floating-guestbook.hidden {
+  display: none;
+}
+.floating-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #8B0000 0%, #C8102E 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+}
+.floating-label {
+  font-size: 0.7rem;
+  color: var(--white);
+  background: rgba(139, 0, 0, 0.9);
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.floating-ring {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 1;
+  animation: pulse-ring 2s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  100% { transform: translateX(-50%) scale(1.8); opacity: 0; }
+}
+
+/* Mobile floating button */
+@media (max-width: 768px) {
+  .floating-guestbook {
+    bottom: 16px;
+    right: 16px;
+  }
+  .floating-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+  .floating-ring {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Hide on contact page */
+body.contact-open .floating-guestbook,
+#slide-9 .floating-guestbook {
+  display: none;
+}
 .guestbook-title { font-size: 0.9rem; color: var(--gold); font-weight: 600; margin-bottom: 0.8rem; text-align: center; }
 .guestbook-form { display: flex; flex-direction: column; gap: 0.6rem; }
 .guestbook-textarea { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.8rem; color: var(--white); font-size: 0.85rem; transition: border-color 0.2s; width: 100%; }
@@ -2176,10 +2257,6 @@ body {
           <span style="font-size:1.4rem">💼</span>
           <span data-i18n="btn-linkedin">领英联系</span>
         </div>
-        <div class="hero-wechat guestbook-toggle" onclick="toggleGuestbook(event)">
-          <span style="font-size:1.4rem">🎤</span>
-          <span data-i18n="guestbook-btn">给我留言</span>
-        </div>
       </div>
       <div class="contact-detail reveal d5">
         <a href="tel:+8615102866373" class="contact-link" onclick="copyToClipboard('+8615102866373', this)"><span>📞</span> <strong>(+86) 15102866373</strong></a>
@@ -2203,6 +2280,13 @@ body {
   <div class="bottom-logo">JEREMY LIU · PORTFOLIO 2026</div>
   <div class="slide-num">09 / 09</div>
 </section>
+
+<!-- Floating Guestbook Button -->
+<div id="floatingGuestbook" class="floating-guestbook" onclick="toggleGuestbook(event)">
+  <div class="floating-icon">🎤</div>
+  <div class="floating-label">留言</div>
+  <div class="floating-ring"></div>
+</div>
 
 <!-- Lightbox Modal -->
 <div id="lightbox" class="lightbox" onclick="handleLightboxClick(event)">
@@ -2973,12 +3057,17 @@ window.addEventListener('DOMContentLoaded', function() {
   // Guestbook toggle function
   window.toggleGuestbook = function(e) {
     e.preventDefault();
+    e.stopPropagation();
     const section = document.getElementById('guestbookSection');
+    const floatingBtn = document.getElementById('floatingGuestbook');
     if (section.style.display === 'none') {
       section.style.display = 'block';
-      section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (floatingBtn) floatingBtn.classList.add('hidden');
+      // Scroll to form
+      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       section.style.display = 'none';
+      if (floatingBtn) floatingBtn.classList.remove('hidden');
     }
   };
 
