@@ -885,6 +885,71 @@ body {
 .floating-guestbook.hidden {
   display: none;
 }
+
+/* ===== GUESTBOOK MODAL ===== */
+.guestbook-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+.guestbook-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+.guestbook-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 480px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.guestbook-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.guestbook-modal-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.guestbook-modal-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--card);
+  color: var(--white);
+  font-size: 1.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.guestbook-modal-close:hover {
+  background: var(--red);
+}
+.guestbook-modal .guestbook-textarea {
+  width: 100%;
+  min-height: 120px;
+  margin-bottom: 0.8rem;
+}
+.guestbook-modal .guestbook-btn {
+  width: 100%;
+}
 .floating-icon {
   width: 56px;
   height: 56px;
@@ -2283,12 +2348,29 @@ body {
   <div class="slide-num">09 / 09</div>
 
   <!-- Floating Guestbook Button -->
-  <div id="floatingGuestbook" class="floating-guestbook" onclick="toggleGuestbook(event)">
+  <div id="floatingGuestbook" class="floating-guestbook" onclick="openGuestbookModal()">
     <div class="floating-icon">🎤</div>
     <div class="floating-label">留言</div>
     <div class="floating-ring"></div>
   </div>
 </section>
+
+<!-- Guestbook Modal -->
+<div id="guestbookModal" class="guestbook-modal" style="display:none;">
+  <div class="guestbook-modal-overlay" onclick="closeGuestbookModal()"></div>
+  <div class="guestbook-modal-content">
+    <div class="guestbook-modal-header">
+      <div class="guestbook-modal-title">💬 给我留言</div>
+      <button class="guestbook-modal-close" onclick="closeGuestbookModal()">×</button>
+    </div>
+    <form id="guestbookFormModal" class="guestbook-form">
+      <textarea id="guestMessageModal" class="guestbook-textarea" placeholder="写下你想说的话..." required></textarea>
+      <button type="submit" class="guestbook-btn">发送留言</button>
+      <div id="guestbookStatusModal" class="guestbook-status"></div>
+    </form>
+  </div>
+</div>
+
 <div id="lightbox" class="lightbox" onclick="handleLightboxClick(event)">
   <span class="lightbox-close" onclick="closeLightbox()">×</span>
   <span class="lightbox-nav prev" onclick="event.stopPropagation(); navigateLightbox(-1)">‹</span>
@@ -3054,31 +3136,28 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Guestbook toggle function
-  window.toggleGuestbook = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const section = document.getElementById('guestbookSection');
-    const floatingBtn = document.getElementById('floatingGuestbook');
-    if (section.style.display === 'none') {
-      section.style.display = 'block';
-      if (floatingBtn) floatingBtn.classList.add('hidden');
-      // Scroll to form
-      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      section.style.display = 'none';
-      if (floatingBtn) floatingBtn.classList.remove('hidden');
-    }
+  // Guestbook modal functions
+  window.openGuestbookModal = function() {
+    document.getElementById('guestbookModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() {
+      document.getElementById('guestMessageModal').focus();
+    }, 100);
   };
 
-  // Guestbook Form Submit
-  const guestbookForm = document.getElementById('guestbookForm');
-  if (guestbookForm) {
-    guestbookForm.addEventListener('submit', async function(e) {
+  window.closeGuestbookModal = function() {
+    document.getElementById('guestbookModal').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  // Modal guestbook form
+  const guestbookFormModal = document.getElementById('guestbookFormModal');
+  if (guestbookFormModal) {
+    guestbookFormModal.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const btn = guestbookForm.querySelector('.guestbook-btn');
-      const status = document.getElementById('guestbookStatus');
-      const message = document.getElementById('guestMessage').value.trim();
+      const btn = guestbookFormModal.querySelector('.guestbook-btn');
+      const status = document.getElementById('guestbookStatusModal');
+      const message = document.getElementById('guestMessageModal').value.trim();
 
       if (!message) return;
 
@@ -3146,7 +3225,8 @@ window.addEventListener('DOMContentLoaded', function() {
         if (formspreeRes.ok) {
           status.textContent = currentLang === 'en' ? '✓ Message sent!' : '✓ 留言已发送！';
           status.className = 'guestbook-status success';
-          guestbookForm.reset();
+          guestbookFormModal.reset();
+          setTimeout(closeGuestbookModal, 1500);
         } else {
           throw new Error('Failed');
         }
@@ -3155,7 +3235,7 @@ window.addEventListener('DOMContentLoaded', function() {
         status.className = 'guestbook-status error';
       } finally {
         btn.disabled = false;
-        btn.textContent = currentLang === 'en' ? 'Send Message' : '发送留言';
+        btn.textContent = currentLang === 'en' ? '发送消息' : '发送消息';
       }
     });
   }
