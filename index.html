@@ -2902,8 +2902,8 @@ if (isMobile) {
   const canvas = document.getElementById('particle-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [];
-  const PARTICLE_COUNT = 60;
-  const CONNECT_DISTANCE = 150;
+  const PARTICLE_COUNT = 80;
+  const CONNECT_DISTANCE = 200;
   let mouseX = -1000, mouseY = -1000;
 
   function resize() {
@@ -2919,8 +2919,9 @@ if (isMobile) {
       this.y = Math.random() * canvas.height;
       this.vx = (Math.random() - 0.5) * 0.5;
       this.vy = (Math.random() - 0.5) * 0.5;
-      this.size = Math.random() * 2 + 1;
+      this.size = Math.random() * 4 + 2;
       this.color = Math.random() > 0.5 ? '200,155,60' : '200,16,46';
+      this.glowSize = this.size * 2.5;
     }
     update() {
       this.x += this.vx;
@@ -2930,9 +2931,18 @@ if (isMobile) {
       if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
     }
     draw() {
+      // Glow effect
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.glowSize, 0, Math.PI * 2);
+      const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.glowSize);
+      gradient.addColorStop(0, `rgba(${this.color},0.4)`);
+      gradient.addColorStop(1, `rgba(${this.color},0)`);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+      // Core
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${this.color},0.6)`;
+      ctx.fillStyle = `rgba(${this.color},0.9)`;
       ctx.fill();
     }
   }
