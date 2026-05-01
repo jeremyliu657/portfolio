@@ -2281,16 +2281,14 @@ body {
   </div>
   <div class="bottom-logo">JEREMY LIU · PORTFOLIO 2026</div>
   <div class="slide-num">09 / 09</div>
+
+  <!-- Floating Guestbook Button -->
+  <div id="floatingGuestbook" class="floating-guestbook" onclick="toggleGuestbook(event)">
+    <div class="floating-icon">🎤</div>
+    <div class="floating-label">留言</div>
+    <div class="floating-ring"></div>
+  </div>
 </section>
-
-<!-- Floating Guestbook Button -->
-<div id="floatingGuestbook" class="floating-guestbook" onclick="toggleGuestbook(event)">
-  <div class="floating-icon">🎤</div>
-  <div class="floating-label">留言</div>
-  <div class="floating-ring"></div>
-</div>
-
-<!-- Lightbox Modal -->
 <div id="lightbox" class="lightbox" onclick="handleLightboxClick(event)">
   <span class="lightbox-close" onclick="closeLightbox()">×</span>
   <span class="lightbox-nav prev" onclick="event.stopPropagation(); navigateLightbox(-1)">‹</span>
