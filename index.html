@@ -1027,18 +1027,21 @@ body {
 
 /* Floating hearts animation */
 @keyframes floatHeart {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+  0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-60px) scale(1.3) rotate(15deg); opacity: 1; }
+  100% { transform: translateY(-150px) scale(0.8) rotate(-10deg); opacity: 0; }
 }
 .floating-heart {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   z-index: 1001;
   pointer-events: none;
-  animation: floatHeart 1.5s ease-out forwards;
+  animation: floatHeart 1.8s ease-out forwards;
 }
-.floating-heart:nth-child(2) { animation-delay: 0.1s; font-size: 1.2rem; }
-.floating-heart:nth-child(3) { animation-delay: 0.2s; font-size: 1rem; }
+.floating-heart:nth-child(2) { animation-delay: 0.15s; font-size: 2rem; }
+.floating-heart:nth-child(3) { animation-delay: 0.3s; font-size: 3rem; }
+.floating-heart:nth-child(4) { animation-delay: 0.1s; font-size: 2.2rem; }
+.floating-heart:nth-child(5) { animation-delay: 0.25s; font-size: 2.8rem; }
 
 .contact-sep { color:var(--border); }
 .bottom-logo { position:absolute; bottom: clamp(14px,2.5vh,28px); right: clamp(1.2rem,4vw,4.5rem); font-family:"Bebas Neue",sans-serif; font-size: clamp(0.72rem,1.3vw,1rem); color:rgba(255,255,255,0.12); letter-spacing:3px; }
