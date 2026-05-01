@@ -1024,6 +1024,22 @@ body {
 .guestbook-status { margin-top: 0.6rem; font-size: 0.8rem; text-align: center; min-height: 1.2rem; }
 .guestbook-status.success { color: var(--green); }
 .guestbook-status.error { color: var(--red); }
+
+/* Floating hearts animation */
+@keyframes floatHeart {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+}
+.floating-heart {
+  position: fixed;
+  font-size: 1.5rem;
+  z-index: 1001;
+  pointer-events: none;
+  animation: floatHeart 1.5s ease-out forwards;
+}
+.floating-heart:nth-child(2) { animation-delay: 0.1s; font-size: 1.2rem; }
+.floating-heart:nth-child(3) { animation-delay: 0.2s; font-size: 1rem; }
+
 .contact-sep { color:var(--border); }
 .bottom-logo { position:absolute; bottom: clamp(14px,2.5vh,28px); right: clamp(1.2rem,4vw,4.5rem); font-family:"Bebas Neue",sans-serif; font-size: clamp(0.72rem,1.3vw,1rem); color:rgba(255,255,255,0.12); letter-spacing:3px; }
 
@@ -3150,6 +3166,25 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.style.overflow = '';
   };
 
+  // Floating hearts animation
+  window.createFloatingHearts = function() {
+    const modal = document.getElementById('guestbookModal');
+    const btn = modal.querySelector('.guestbook-btn');
+    const rect = btn.getBoundingClientRect();
+    const hearts = ['💗', '💖', '💕', '❤️', '🩷'];
+    for (let i = 0; i < 5; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 60) + 'px';
+      heart.style.top = (rect.top - 10) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(function() {
+        heart.remove();
+      }, 1500);
+    }
+  };
+
   // Modal guestbook form
   const guestbookFormModal = document.getElementById('guestbookFormModal');
   if (guestbookFormModal) {
@@ -3226,7 +3261,9 @@ window.addEventListener('DOMContentLoaded', function() {
           status.textContent = currentLang === 'en' ? '✓ Message sent!' : '✓ 留言已发送！';
           status.className = 'guestbook-status success';
           guestbookFormModal.reset();
-          setTimeout(closeGuestbookModal, 1500);
+          // Floating hearts animation
+          createFloatingHearts();
+          setTimeout(closeGuestbookModal, 2000);
         } else {
           throw new Error('Failed');
         }
