@@ -2902,8 +2902,8 @@ if (isMobile) {
   const canvas = document.getElementById('particle-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [];
-  const PARTICLE_COUNT = 80;
-  const CONNECT_DISTANCE = 200;
+  const PARTICLE_COUNT = 60;
+  const CONNECT_DISTANCE = 150;
   let mouseX = -1000, mouseY = -1000;
 
   function resize() {
@@ -2919,9 +2919,9 @@ if (isMobile) {
       this.y = Math.random() * canvas.height;
       this.vx = (Math.random() - 0.5) * 0.5;
       this.vy = (Math.random() - 0.5) * 0.5;
-      this.size = Math.random() * 4 + 2;
+      this.size = Math.random() * 2 + 1.5;
       this.color = Math.random() > 0.5 ? '200,155,60' : '200,16,46';
-      this.glowSize = this.size * 2.5;
+      this.glowSize = this.size * 2;
     }
     update() {
       this.x += this.vx;
