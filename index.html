@@ -2337,7 +2337,7 @@ body {
       <div id="guestbookSection" class="guestbook-section" style="display:none;">
         <div class="guestbook-title" data-i18n="guestbook-title">💬 给我留言</div>
         <form id="guestbookForm" class="guestbook-form">
-          <textarea id="guestMessage" class="guestbook-textarea" placeholder="写下你想说的话..." required data-i18n-placeholder="guest-message"></textarea>
+          <textarea id="guestMessage" class="guestbook-textarea" data-i18n-placeholder="guest-message" placeholder="你好，请畅所欲言吧" required></textarea>
           <button type="submit" class="guestbook-btn" data-i18n="guestbook-submit">发送留言</button>
         </form>
         <div id="guestbookStatus" class="guestbook-status"></div>
@@ -2350,7 +2350,7 @@ body {
   <!-- Floating Guestbook Button -->
   <div id="floatingGuestbook" class="floating-guestbook" onclick="openGuestbookModal()">
     <div class="floating-icon">🎤</div>
-    <div class="floating-label">留言</div>
+    <div class="floating-label" data-i18n="guestbook-float-btn">留言</div>
     <div class="floating-ring"></div>
   </div>
 </section>
@@ -2360,12 +2360,12 @@ body {
   <div class="guestbook-modal-overlay" onclick="closeGuestbookModal()"></div>
   <div class="guestbook-modal-content">
     <div class="guestbook-modal-header">
-      <div class="guestbook-modal-title">💬 给我留言</div>
+      <div class="guestbook-modal-title" data-i18n="guestbook-modal-title">💬 给我留言</div>
       <button class="guestbook-modal-close" onclick="closeGuestbookModal()">×</button>
     </div>
     <form id="guestbookFormModal" class="guestbook-form">
-      <textarea id="guestMessageModal" class="guestbook-textarea" placeholder="写下你想说的话..." required></textarea>
-      <button type="submit" class="guestbook-btn">发送留言</button>
+      <textarea id="guestMessageModal" class="guestbook-textarea" data-i18n-placeholder="guest-message" placeholder="你好，请畅所欲言吧" required></textarea>
+      <button type="submit" class="guestbook-btn" data-i18n="guestbook-submit">发送留言</button>
       <div id="guestbookStatusModal" class="guestbook-status"></div>
     </form>
   </div>
@@ -3481,6 +3481,8 @@ var I18N = {
   'guestbook-title': { zh: '💬 给我留言', en: '💬 Leave a Message' },
   'guest-message': { zh: '你好，请畅所欲言吧', en: 'Hi, feel free to say anything!' },
   'guestbook-submit': { zh: '发送留言', en: 'Send Message' },
+  'guestbook-float-btn': { zh: '留言', en: 'Message' },
+  'guestbook-modal-title': { zh: '💬 给我留言', en: '💬 Leave a Message' },
   // Skill groups
   'sg-1': { zh: '数据分析', en: 'Data Analytics' },
   'sg-2': { zh: '客户开发 BD', en: 'Business Development' },
