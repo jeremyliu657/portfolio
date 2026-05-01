@@ -941,10 +941,12 @@ body {
   }
 }
 
-/* Hide on contact page */
-body.contact-open .floating-guestbook,
-#slide-9 .floating-guestbook {
+/* Hide on all pages except contact page */
+.floating-guestbook {
   display: none;
+}
+#slide-9 .floating-guestbook {
+  display: flex;
 }
 .guestbook-title { font-size: 0.9rem; color: var(--gold); font-weight: 600; margin-bottom: 0.8rem; text-align: center; }
 .guestbook-form { display: flex; flex-direction: column; gap: 0.6rem; }
