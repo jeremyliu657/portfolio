@@ -3625,6 +3625,12 @@ function setLanguage(lang) {
       el.alt = I18N[key][lang];
     }
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (I18N[key] && I18N[key][lang]) {
+      el.placeholder = I18N[key][lang];
+    }
+  });
   document.documentElement.lang = lang;
 }
 
